@@ -34,7 +34,7 @@ group :development do
   gem 'spring'
 end
 
-group :productions do
+group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
