@@ -1,5 +1,10 @@
+.tab-pane{
+  padding:  20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
 
- .form-bordered {
+.form-bordered {
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 20px;
@@ -15,16 +20,15 @@ main {
   padding-top: 40px;
 }
 
-header {
+h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.social-link {
+.social-tabs {
   color: #222;
-  font-size: 18pt;
   padding: 0 5px;
   &:hover {
     text-decoration: none;
@@ -65,16 +69,4 @@ header {
   &.tumblr:hover {
     color: #32506d;
   }
-}
-
-.table-influencers {
-  tr {
-    th, td {
-      vertical-align: middle;
-    }
-  }
-}
-
-.influencer-image {
-  border-radius: 3px;
 }

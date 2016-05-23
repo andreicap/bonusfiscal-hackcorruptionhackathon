@@ -1,20 +1,38 @@
-<header>
-  <h1>Influencers</h1>
+<div class="page-header">
+  <h1>My channels</h1>
+</div>
+
+<div class="jumbotron">
   
-</header>
+  <div class="tabbable">
+   <ul class="nav nav-tabs nav-justified social-tabs">
+    <li class="active"><a href="#facebook_tab"  data-toggle="tab">
+      <%= fa_icon "facebook", class: "fa-2x" %> 
+    </a></li>
+    <li><a href="#instagram_tab" data-toggle="tab">
+      <%= fa_icon "instagram", class: "fa-2x" %> 
+    </a></li>
+    <li><a  href="#twitter_tab" data-toggle="tab">
+      <%= fa_icon "twitter", class: "fa-2x" %> 
+    </a></li>
+    <li><a  href="#youtube_tab" data-toggle="tab">
+      <%= fa_icon "youtube", class: "fa-2x" %> 
+    </a></li>
+  </div>
 
-<table class="table table-hover table-influencers">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Image</th>
-      <th>Name</th>
-      <th>Social links</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= fa_icon "youtube", class: "fa-2x" %> 
-  </tbody>
-</table>
+  <div class="tab-content">
+    <div id="facebook_tab" class="tab-pane active">
+      Lorem
+    </div>
+    <div id="instagram_tab"  class="tab-pane">
+      Lorem 
+    </div>
+    <div id="twitter_tab"  class="tab-pane">
+      Lorem ipsum 
+    </div>
+    <div id="youtube_tab"  class="tab-pane">
+      Lorem ipsum dolor 
+    </div>
+ </div>
 
+</div>
