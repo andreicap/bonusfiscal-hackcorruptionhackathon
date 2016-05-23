@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FinalProj</title>
+  <title>Track</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render 'layouts/navbar' %>
-  <div class="container">
+
+<%= render partial: "layouts/navbar" %>
+
+<div class="container">
+  <main>
     <%= yield %>
-  </div>
+  </main>
+</div>
 
 </body>
 </html>
+
