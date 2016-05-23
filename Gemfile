@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'devise'
+gem 'devise-bootstrap-views'
 gem 'therubyracer'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
