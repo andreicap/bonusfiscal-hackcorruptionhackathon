@@ -8,13 +8,14 @@
 </head>
 <body>
 
-<%= render partial: "layouts/navbar" %>
-
-<div class="container">
-  <main>
-    <%= yield %>
-  </main>
-</div>
+  <%= render partial: "layouts/navbar" %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <div class="container">
+    <main>
+      <%= yield %>
+    </main>
+  </div>
 
 </body>
 </html>
