@@ -9,19 +9,8 @@
 <body>
 
   <%= render partial: "layouts/navbar" %>
-  
-<!--   <div class="container">
-  <p class="notice"  role="alert">
-    <div class="alert alert-info alert-dismissible">
-      <%= notice %>
-    </div>
-  </p>
-  <p class="alert">
-    <div class="alert alert-warning alert-dismissible"  role="alert">
-      <%= alert %>
-    </div>
-  </p>
-  </div> -->
+
+  <%= render partial: "layouts/errors" %>
 
   <div class="container">
       <%= yield %>
