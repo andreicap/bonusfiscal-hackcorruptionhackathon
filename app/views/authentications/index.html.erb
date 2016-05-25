@@ -1,39 +1,44 @@
  <% "Sign In Options" %>
  
-<% if @authentications %>
-  <% unless @authentications.empty? %>
-    <p><strong>You have linked these services with your account:</strong></p>
-    <div class="authentications">
-      <% for authentication in @authentications %>
-        <div class="authentication">
-          <%= image_tag "#{authentication.provider}_icon.png", size: "32x32"%>
-          <div class="provider"><%= authentication.provider_name %></div>
-          <div class="uid"><%= authentication.uid %></div>
-          <%= link_to "X", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>
-        </div>
-      <% end %>
-      <div class="clear"></div>
-    </div>
+ <% if @authentications %>
+ <% unless @authentications.empty? %>
+ <p><strong>You have linked these services with your account:</strong></p>
+ <div class="authentications">
+  <% for authentication in @authentications %>
+  <div class="authentication">
+    <%= image_tag "#{authentication.provider}_icon.png", size: "32x32"%>
+    <div class="provider"><%= authentication.provider_name %></div>
+    <div class="uid"><%= authentication.uid %></div>
+    <%= link_to "X", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>
+  </div>
   <% end %>
-<% else %>
-  <p><strong>Sign in through one of these services:</strong></p>
+  <div class="clear"></div>
+</div>
 <% end %>
- 
+<% else %>
+<p><strong>Sign in through one of these services:</strong></p>
+<% end %>
+<div class="jumbotron">
 <p><strong>Add another service to sign in with:</strong></p>
+<div class="row">
+  <div class="col-xs-2"></div>
+  <div class="col-xs-1"></div>
   <%- current_user.class.omniauth_providers.each do |provider| %>
     <%- if !current_user.existing_auth_providers.include?(provider.to_s) %>
       <%= link_to omniauth_authorize_path(current_user.class, provider) do %>
-          <%= image_tag "#{provider.to_s}_icon.png", size: "32x32" %>
+         <div class="col-xs-2"><%= fa_icon provider.to_s, class: "fa-2x"%></div>
       <% end %>
     <% end %>
   <% end -%>
- 
+</div>
+</div>
+
 <div class="clear"></div>
- 
+
 <% unless user_signed_in? %>
-  <p>
-    <strong>Don't use these services?</strong>
-    <%= link_to "Sign up", new_user_registration_path %> or
-    <%= link_to "sign in", new_user_session_path %> with a password.
-  </p>
+<p>
+  <strong>Don't use these services?</strong>
+  <%= link_to "Sign up", new_user_registration_path %> or
+  <%= link_to "sign in", new_user_session_path %> with a password.
+</p>
 <% end %>
