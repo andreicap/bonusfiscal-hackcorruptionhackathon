@@ -31,7 +31,7 @@ class AuthenticationsController < ApplicationController
     @authentication = current_user.authentications.find(params[:id])
     @authentication.destroy
     flash[:notice] = "Successfully destroyed authentication."
-    redirect_to user_edit_path
+    redirect_to edit_user_registration_path
   end
 
 end
