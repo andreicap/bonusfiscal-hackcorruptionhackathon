@@ -8,7 +8,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
     elsif current_user
       current_user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
       flash[:notice] = "Authentication successful."
-      redirect_to authentications_url
+      redirect_to user_edit_path
     else
       user = User.new
       user.apply_omniauth(omniauth)
