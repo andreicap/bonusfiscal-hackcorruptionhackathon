@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   post '/auth/:provider/callback' => 'authentications#create'
 
-  root 'landing#index'
+  root 'registrations#index'
 
   get '/info', to: 'pages#index'
 
