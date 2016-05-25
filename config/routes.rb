@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/auth/:provider/callback' => 'authentications#create'
   resources :authentications, only: [:create, :destroy]
   get 'authentications' => 'authentications#index'
-  root 'pages#index'
+  root 'landing#index'
 
   get '/info', to: 'pages#index'
 
