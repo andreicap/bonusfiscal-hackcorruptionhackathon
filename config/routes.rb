@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'logout' => 'devise/sessions#destroy'
   end
   post '/auth/:provider/callback' => 'authentications#create'
-  resources :authentications, only: [:destroy]
+  resources :authentications, only: [:create, :destroy]
 
   root 'authentications#index'
 
