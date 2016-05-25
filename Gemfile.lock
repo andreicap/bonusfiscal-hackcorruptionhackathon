@@ -225,6 +225,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   nokogiri
+  omniauth
   omniauth-facebook
   omniauth-instagram
   omniauth-twitter
