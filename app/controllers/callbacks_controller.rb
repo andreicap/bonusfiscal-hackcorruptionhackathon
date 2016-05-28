@@ -1,4 +1,5 @@
 class CallbacksController < Devise::OmniauthCallbacksController
+
   def all
     omniauth = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
@@ -6,7 +7,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
       flash[:notice] = "Signed in successfully."
       sign_in_and_redirect(:user, authentication.user)
     elsif current_user
-      current_user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
+      create_new_authentication omniauth
       flash[:notice] = "Authentication successful."
       redirect_to edit_user_registration_path
     else
@@ -24,4 +25,27 @@ class CallbacksController < Devise::OmniauthCallbacksController
   alias_method :facebook, :all
   alias_method :twitter, :all
   alias_method :instagram, :all
+
+
+  private
+
+  def create_new_authentication omniauth
+    info = {}
+    info[:provider] = omniauth.provider
+    info[:uid]      = omniauth.uid
+    info[:name]     = omniauth.info.name
+    info[:email]    = omniauth.info.email
+    info[:token]    = omniauth.credentials.token
+
+    puts
+    puts "----------------"
+    puts info
+    puts "----------------"
+    current_user.authentications.create!(info)
+    
+    
+  end
+  
 end
+
+

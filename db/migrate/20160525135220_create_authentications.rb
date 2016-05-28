@@ -4,7 +4,6 @@ class CreateAuthentications < ActiveRecord::Migration
       t.string :provider
       t.string :uid
       t.integer :user_id
-
       t.timestamps null: false
     end
   end
