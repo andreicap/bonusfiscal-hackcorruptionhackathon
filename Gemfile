@@ -20,7 +20,9 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-instagram'
-gem "koala", "~> 2.2"
+
+gem "fb_graph"
+gem "koala"
 
 gem 'jbuilder', '~> 2.0'
 
