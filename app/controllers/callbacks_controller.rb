@@ -3,11 +3,14 @@ class CallbacksController < Devise::OmniauthCallbacksController
   def all
     omniauth = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+    @user = current_user
     if authentication
       flash[:notice] = "Signed in successfully."
       sign_in_and_redirect(:user, authentication.user)
     elsif current_user
       create_new_authentication omniauth
+      @user[omniauth.provider] = true
+      @user.save
       flash[:notice] = "Authentication successful."
       redirect_to edit_user_registration_path
     else
