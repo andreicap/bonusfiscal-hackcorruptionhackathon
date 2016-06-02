@@ -5,27 +5,33 @@
 <div class="jumbotron">
     <div class="tabbable">
      <ul class="nav nav-tabs nav-justified social-tabs">
-      <li class="active"><a href="#facebook_tab"  data-toggle="tab">
-        <%= fa_icon "facebook", class: "fa-2x" %> 
-      </a></li>
-      <li><a href="#instagram_tab" data-toggle="tab">
-        <%= fa_icon "instagram", class: "fa-2x" %> 
-      </a></li>
-      <li><a  href="#twitter_tab" data-toggle="tab">
-        <%= fa_icon "twitter", class: "fa-2x" %> 
-      </a></li>
+      <% if @user.facebook %>
+        <li class="active"><a href="#facebook_tab"  data-toggle="tab">
+          <%= fa_icon "facebook", class: "fa-2x" %> 
+        </a></li>
+      <% end %>
+      <% if @user.instagram %>
+        <li><a href="#instagram_tab" data-toggle="tab">
+          <%= fa_icon "instagram", class: "fa-2x" %> 
+        </a></li>
+      <% end %>
+      <% if @user.twitter %>
+        <li><a  href="#twitter_tab" data-toggle="tab">
+          <%= fa_icon "twitter", class: "fa-2x" %> 
+        </a></li>
+      <% end %>
     </div>
 
     <div class="tab-content">
-      <div id="facebook_tab" class="tab-pane active">
-          <% if @user.facebook %>
+      <% if @user.facebook %>
+        <div id="facebook_tab" class="tab-pane active">
             <h3>Feed</h3>
               <table class="table table-striped">
-                <tr >
+                <tr>
                   <th class="text-left" >Story</th>
                   <th class="text-center">Created</th>
                 </tr>
-                <% @feed.each do |f| %>
+                <% @fb_feed.each do |f| %>
                   <% if f["message"] %>
                   <tr>
                     <td class="text-left">
@@ -34,26 +40,46 @@
                   </tr>
                   <% end %>
                 <% end %>
-                <% feed_next_page = @feed.next_page %>
-                <% feed_next_page.each do |f| %>
-                  <tr>
-                    <td><%= f["message"] %></td>
-                    <td><%= f["created_time"] %></td>
-                  </tr>
-                <% end %>
+
+              <!-- <% feed_next_page = @fb_feed.next_page %>
+              <% feed_next_page.each do |f| %>
+                <tr>
+                  <td><%= f["message"] %></td>
+                  <td><%= f["created_time"] %></td>
+                </tr>
+              <% end %> -->
             </table>
-          <%else%>
-             <h3>No content</h3>
-          <% end %>
-      </div>
+          </div>
+        <% end %>
 
+      <% if @user.instagram %>
+        <div id="instagram_tab"  class="tab-pane">
+          Lorem 
+        </div>
+      <% end %>
 
-    <div id="instagram_tab"  class="tab-pane">
-      Lorem 
+      <% if @user.twitter %>
+        <div id="twitter_tab"  class="tab-pane">
+         <table class="table table-striped">
+            <tr>
+              <th class="text-left" >Story</th>
+              <th class="text-center">Created</th>
+            </tr>
+            <% @tw_feed.each do |t| %>
+              <% if t.text %>
+              <tr>
+                <td class="text-left">
+                  <%= t.text %>
+                </td>
+                <td> 
+                  <%= Date.parse(t.created_at.to_s) %>
+                </td>
+              </tr>
+              <% end %>
+            <% end %>
+          </table>
+        </div>
+      <% end %>
     </div>
-    <div id="twitter_tab"  class="tab-pane">
-      Lorem ipsum 
-    </div>
- </div>
-
+  </div>
 </div>
