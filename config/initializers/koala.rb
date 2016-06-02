@@ -3,6 +3,7 @@ module Facebook
   SECRET = ENV["FACEBOOK_SECRET"]
 end
 
+
 Koala::Facebook::OAuth.class_eval do
   def initialize_with_default_settings(*args)
     case args.size

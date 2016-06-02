@@ -1,38 +1,59 @@
 <div class="page-header" >
-  <h1 class="text-center"><%= @name %></h1>
+  <h2 class="text-center"><%= @name %></h2>
 </div>
 
 <div class="jumbotron">
-  
-  <div class="tabbable">
-   <ul class="nav nav-tabs nav-justified social-tabs">
-    <li class="active"><a href="#facebook_tab"  data-toggle="tab">
-      <%= fa_icon "facebook", class: "fa-2x" %> 
-    </a></li>
-    <li><a href="#instagram_tab" data-toggle="tab">
-      <%= fa_icon "instagram", class: "fa-2x" %> 
-    </a></li>
-    <li><a  href="#twitter_tab" data-toggle="tab">
-      <%= fa_icon "twitter", class: "fa-2x" %> 
-    </a></li>
-<!--     <li><a  href="#youtube_tab" data-toggle="tab">
-      <%= fa_icon "youtube", class: "fa-2x" %> 
-    </a></li> -->
-  </div>
-
-  <div class="tab-content">
-    <div id="facebook_tab" class="tab-pane active">
-      Lorem
+    <div class="tabbable">
+     <ul class="nav nav-tabs nav-justified social-tabs">
+      <li class="active"><a href="#facebook_tab"  data-toggle="tab">
+        <%= fa_icon "facebook", class: "fa-2x" %> 
+      </a></li>
+      <li><a href="#instagram_tab" data-toggle="tab">
+        <%= fa_icon "instagram", class: "fa-2x" %> 
+      </a></li>
+      <li><a  href="#twitter_tab" data-toggle="tab">
+        <%= fa_icon "twitter", class: "fa-2x" %> 
+      </a></li>
     </div>
+
+    <div class="tab-content">
+      <div id="facebook_tab" class="tab-pane active">
+          <% if @user.facebook %>
+            <h3>Feed</h3>
+              <table class="table table-striped">
+                <tr >
+                  <th class="text-left" >Story</th>
+                  <th class="text-center">Created</th>
+                </tr>
+                <% @feed.each do |f| %>
+                  <% if f["message"] %>
+                  <tr>
+                    <td class="text-left">
+                    <%= f["message"]%></td>
+                    <td><%= Date.parse(f["created_time"]) %></td>
+                  </tr>
+                  <% end %>
+                <% end %>
+                <% feed_next_page = @feed.next_page %>
+                <% feed_next_page.each do |f| %>
+                  <tr>
+                    <td><%= f["message"] %></td>
+                    <td><%= f["created_time"] %></td>
+                  </tr>
+                <% end %>
+            </table>
+          <%else%>
+             <h3>No content</h3>
+          <% end %>
+      </div>
+
+
     <div id="instagram_tab"  class="tab-pane">
       Lorem 
     </div>
     <div id="twitter_tab"  class="tab-pane">
       Lorem ipsum 
     </div>
-<!--     <div id="youtube_tab"  class="tab-pane">
-      Lorem ipsum dolor 
-    </div> -->
  </div>
 
 </div>

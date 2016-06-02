@@ -25,6 +25,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
       end
     end
   end
+  
   alias_method :facebook, :all
   alias_method :twitter, :all
   alias_method :instagram, :all
@@ -39,7 +40,8 @@ class CallbacksController < Devise::OmniauthCallbacksController
     info[:name]     = omniauth.info.name
     info[:email]    = omniauth.info.email
     info[:token]    = omniauth.credentials.token
-
+    info[:secret]   = info[:provider] == "twitter" ? omniauth.credentials.secret : ""
+     
     puts
     puts "----------------"
     puts info

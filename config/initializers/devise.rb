@@ -12,7 +12,7 @@
    config.reset_password_within = 6.hours
    config.sign_out_via = :delete
    #Add your ID and secret here #ID first, secret second
-   config.omniauth :facebook, ENV["FACEBOOK_ID"], ENV["FACEBOOK_SECRET"], scope: 'public_profile,email', info_fields: 'email,name'
+   config.omniauth :facebook, ENV["FACEBOOK_ID"], ENV["FACEBOOK_SECRET"], scope: 'public_profile,email', info_fields: 'email,name, accounts'
    config.omniauth :twitter, ENV["TWITTER_KEY"], ENV["TWITTER_SECRET"], scope: 'public_profile', info_fields: 'id,name,link'
    config.omniauth :instagram, ENV["INSTAGRAM_ID"], ENV["INSTAGRAM_SECRET"]
 end

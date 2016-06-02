@@ -23,6 +23,8 @@ gem 'omniauth-instagram'
 
 gem "fb_graph"
 gem "koala"
+gem "twitter"
+gem 'easy_translate'
 
 gem 'jbuilder', '~> 2.0'
 
