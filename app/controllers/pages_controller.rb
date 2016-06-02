@@ -24,6 +24,7 @@ class PagesController < ApplicationController
         @tw_feed = @client_tw.user_timeline
       rescue Exception => msg
         puts "--error--", msg
+      end
     end
 
   end
