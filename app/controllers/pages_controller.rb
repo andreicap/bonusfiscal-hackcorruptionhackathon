@@ -1,4 +1,4 @@
-require 'pp'
+
 class PagesController < ApplicationController
   before_action :set_user
   @name = "You did not provide any name yet"
@@ -7,10 +7,14 @@ class PagesController < ApplicationController
     #EasyTranslate.api_key = 'AIzaSyB1r3abwQulFPKY_RpduJlonl-x0wHLy7w'
 
     if @user.facebook
-      @access_token = get_fb_auth.token
-      puts @graph = Koala::Facebook::API.new(@access_token)
-      @name = get_fb_auth.name;
-      @fb_feed = @graph.get_connection("RailsGirls.Chisinau", "posts")
+      begin
+        @access_token = get_fb_auth.token
+        puts @graph = Koala::Facebook::API.new(@access_token)
+        @name = get_fb_auth.name;
+        @fb_feed = @graph.get_connection("RailsGirls.Chisinau", "posts")
+      rescue Exception => msg
+        puts "--error--", msg
+      end
     end
 
     if @user.twitter
@@ -21,12 +25,16 @@ class PagesController < ApplicationController
           config.access_token        = get_tw_auth.token
           config.access_token_secret = get_tw_auth.secret
         end
-        @tw_feed = @client_tw.user_timeline
+        @tw_feed = @client_tw.home_timeline
       rescue Exception => msg
         puts "--error--", msg
       end
     end
 
+    if @user.instagram
+      client = Instagram.client(:access_token => get_ig_auth.token)
+      @ig_feed = client.user_recent_media
+    end
   end
 
 

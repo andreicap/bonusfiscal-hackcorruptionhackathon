@@ -40,21 +40,30 @@
                   </tr>
                   <% end %>
                 <% end %>
-
-              <!-- <% feed_next_page = @fb_feed.next_page %>
-              <% feed_next_page.each do |f| %>
-                <tr>
-                  <td><%= f["message"] %></td>
-                  <td><%= f["created_time"] %></td>
-                </tr>
-              <% end %> -->
             </table>
           </div>
         <% end %>
 
       <% if @user.instagram %>
         <div id="instagram_tab"  class="tab-pane">
-          Lorem 
+          <table class="table table-striped">
+            <tr>
+              <th class="text-left" >Story</th>
+              <th class="text-center">Likes</th>
+            </tr>
+            <% @ig_feed.each do |p| %>
+              <% if p.caption.text %>
+              <tr>
+                <td class="text-left">
+                  <%= p.caption.text %>
+                </td>
+                <td> 
+                  <%= p.likes["count"] %>
+                </td>
+              </tr>
+              <% end %>
+            <% end %>
+          </table> 
         </div>
       <% end %>
 
