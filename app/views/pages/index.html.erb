@@ -52,7 +52,7 @@
               <th class="text-center">Likes</th>
             </tr>
             <% @ig_feed.each do |p| %>
-              <% if p %>
+              <% if p.caption %>
               <tr>
                 <td class="text-left">
                   <%= p.caption.text %>
