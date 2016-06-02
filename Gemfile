@@ -24,11 +24,13 @@ gem 'omniauth-instagram'
 gem "fb_graph"
 gem "koala"
 gem "twitter"
+gem 'rest-client'
+gem 'instagram'
 gem 'easy_translate'
 
 gem 'jbuilder', '~> 2.0'
 
-gem 'rest-client'
+
 gem 'nokogiri'
 
 gem 'puma'

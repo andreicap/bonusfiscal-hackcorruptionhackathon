@@ -14,13 +14,16 @@ class PagesController < ApplicationController
     end
 
     if @user.twitter
-      @client_tw = Twitter::REST::Client.new do |config|
-        config.consumer_key        = ENV["TWITTER_KEY"]
-        config.consumer_secret     = ENV["TWITTER_SECRET"]
-        config.access_token        = get_tw_auth.token
-        config.access_token_secret = get_tw_auth.secret
-      end
-      @tw_feed = @client_tw.user_timeline      
+      begin
+        @client_tw = Twitter::REST::Client.new do |config|
+          config.consumer_key        = ENV["TWITTER_KEY"]
+          config.consumer_secret     = ENV["TWITTER_SECRET"]
+          config.access_token        = get_tw_auth.token
+          config.access_token_secret = get_tw_auth.secret
+        end
+        @tw_feed = @client_tw.user_timeline
+      rescue Exception => msg
+        puts "--error--", msg
     end
 
   end
