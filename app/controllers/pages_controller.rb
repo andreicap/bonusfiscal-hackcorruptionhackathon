@@ -7,14 +7,7 @@ class PagesController < ApplicationController
     #EasyTranslate.api_key = 'AIzaSyB1r3abwQulFPKY_RpduJlonl-x0wHLy7w'
 
     if @user.facebook
-      begin
-        @access_token = get_fb_auth.token
-        puts @graph = Koala::Facebook::API.new(@access_token)
-        @name = get_fb_auth.name;
-        @fb_feed = @graph.get_connection("RailsGirls.Chisinau", "posts")
-      rescue Exception => msg
-        puts "--error--", msg
-      end
+      create_fb
     end
 
     if @user.twitter
@@ -49,6 +42,36 @@ class PagesController < ApplicationController
 
   def get_ig_auth
     @user.authentications.find_by_provider(:instagram)
+  end
+
+  def create_fb
+    u = @user.feeds.find_by_provider("facebook")
+    if !@user.feeds.find_by_provider("facebook")
+      @feed = Feed.new
+      @feed.provider = "facebook"
+      @feed.user_id = @user.id
+      @feed.save
+      
+      begin
+        @access_token = get_fb_auth.token
+        puts @graph = Koala::Facebook::API.new(@access_token)
+        @name = get_fb_auth.name
+        @user.first_name = @name
+        fb_feed = @graph.get_connection("RailsGirls.Chisinau", "posts")
+      rescue Exception => msg
+        puts "--error--", msg
+      end
+
+      fb_feed.each do |post|
+        p = Post.new
+        p.feed_id = @feed.id
+        p.content = post["message"]
+        p.f_id = @feed.id
+        puts "-----", p, "-----"
+        p.save
+      end
+    end
+    @fb_posts = u.posts.all
   end
 
   def set_user

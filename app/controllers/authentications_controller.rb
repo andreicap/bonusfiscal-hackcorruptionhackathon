@@ -30,6 +30,7 @@ class AuthenticationsController < ApplicationController
   def destroy
     @authentication = current_user.authentications.find(params[:id])
     current_user[@authentication.provider] = false
+    #update for feeds creation
     current_user.save  
     @authentication.destroy
     flash[:notice] = "Successfully destroyed authentication."

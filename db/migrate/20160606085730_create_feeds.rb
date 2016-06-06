@@ -6,7 +6,7 @@ class CreateFeeds < ActiveRecord::Migration
       t.string :provider, default: ""
       t.string :likes, default: ""
       t.string :insights, default: ""
-      t.string :uid, default: ""
+      t.integer :user_id
       t.timestamps null: false
     end
   end

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   end
   post '/auth/:provider/callback' => 'authentications#create'
   resources :authentications, only: [:create, :destroy]
+  
+  resources :feeds, only: [:create, :destroy]
+
   get 'authentications' => 'authentications#index'
   root 'landing#index'
 
