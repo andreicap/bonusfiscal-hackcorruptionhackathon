@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :authentications
+  has_many :feeds
   devise :database_authenticatable, :registerable, :recoverable,
   :rememberable, :trackable, :validatable,
   :omniauthable, :omniauth_providers => [:facebook, :twitter, :instagram] 
