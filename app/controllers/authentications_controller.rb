@@ -29,6 +29,8 @@ class AuthenticationsController < ApplicationController
 
   def destroy
     @authentication = current_user.authentications.find(params[:id])
+    feed = current_user.feeds.find_by_provider(@authentication.provider)
+    feed.destroy
     current_user[@authentication.provider] = false
     #update for feeds creation
     current_user.save  
