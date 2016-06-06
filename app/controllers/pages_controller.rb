@@ -8,15 +8,17 @@ class PagesController < ApplicationController
 
     if @user.facebook
       create_fb
+      @fb_posts = @user.feeds.find_by_provider("facebook").posts
     end
 
     if @user.twitter
       create_tw
+      @tw_posts = @user.feeds.find_by_provider("twitter").posts
     end
 
     if @user.instagram
-      client = Instagram.client(:access_token => get_ig_auth.token)
-      @ig_feed = client.user_recent_media
+      create_ig
+      @ig_posts = @user.feeds.find_by_provider("instagram").posts
     end
   end
 
@@ -40,7 +42,7 @@ class PagesController < ApplicationController
       feed = Feed.new
       feed.provider = "facebook"
       feed.user_id = @user.id
-      
+      feed.save
       begin
         access_token = get_fb_auth.token
         puts graph = Koala::Facebook::API.new(access_token)
@@ -57,12 +59,9 @@ class PagesController < ApplicationController
         p.content = post["message"]
         p.date = post["created_time"]
         p.likes = graph.get_object(post["id"], :fields => "likes.summary(true)")["likes"]["summary"]["total_count"]
-        puts p.likes
         p.save
       end
-      feed.save
     end
-    @fb_posts = feed.posts.all
   end
 
   def create_tw
@@ -71,7 +70,7 @@ class PagesController < ApplicationController
       feed = Feed.new
       feed.provider = "twitter"
       feed.user_id = @user.id
-
+      feed.save
       begin
         client_tw = Twitter::REST::Client.new do |config|
           config.consumer_key        = ENV["TWITTER_KEY"]
@@ -79,12 +78,46 @@ class PagesController < ApplicationController
           config.access_token        = get_tw_auth.token
           config.access_token_secret = get_tw_auth.secret
         end
-        @tw_feed = client_tw.home_timeline
+        tw_feed = client_tw.home_timeline
       rescue Exception => msg
         puts "--error--", msg
       end
 
+       tw_feed.each do |post|
+        p = Post.new
+        p.feed_id = feed.id
+        p.f_id = post.id
+        p.content = post.text
+        p.likes = post.favorite_count
+        p.save
+      end
+    end
+  end
 
+  def create_ig
+    feed = @user.feeds.find_by_provider("instagram")
+    if !feed
+      feed = Feed.new
+      feed.provider = "instagram"
+      feed.user_id = @user.id
+      feed.save
+      begin
+        client = Instagram.client(:access_token => get_ig_auth.token)
+        ig_feed = client.user_recent_media
+      rescue Exception => msg
+        puts "--error--", msg
+      end
+
+      ig_feed.each do |post|
+        p = Post.new
+        p.feed_id = feed.id
+
+        p.f_id = post.id
+        p.content = post.caption.text
+        p.likes = post.likes["count"]
+        p.save
+      end
+    end
   end
 
 

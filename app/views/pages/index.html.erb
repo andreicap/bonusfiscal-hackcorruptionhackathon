@@ -29,15 +29,13 @@
               <table class="table table-striped">
                 <tr>
                   <th class="text-left" >Story</th>
-                  <th class="text-center">Created</th>
                   <th class="text-center">Likes</th>
                 </tr>
                 <% @fb_posts.each do |p| %>
                   <% if p.content %>
                   <tr>
                     <td class="text-left">
-                    <%= p["content"]%></td>
-                    <td><%= Date.parse(p.date) %></td>
+                    <%= p.content%></td>
                     <td><%= p.likes %></td>
                   </tr>
                   <% end %>
@@ -48,19 +46,20 @@
 
       <% if @user.instagram %>
         <div id="instagram_tab"  class="tab-pane">
+          <h3>Instagram Posts</h3>
           <table class="table table-striped">
             <tr>
               <th class="text-left" >Story</th>
               <th class="text-center">Likes</th>
             </tr>
-            <% @ig_feed.each do |p| %>
-              <% if p.caption %>
+            <% @ig_posts.each do |p| %>
+              <% if p.content %>
               <tr>
                 <td class="text-left">
-                  <%= p.caption.text %>
+                  <%= p.content %>
                 </td>
                 <td> 
-                  <%= p.likes["count"] %>
+                  <%= p.likes %>
                 </td>
               </tr>
               <% end %>
@@ -71,19 +70,20 @@
 
       <% if @user.twitter %>
         <div id="twitter_tab"  class="tab-pane">
+          <h3>Tweets</h3>
          <table class="table table-striped">
             <tr>
               <th class="text-left" >Story</th>
-              <th class="text-center">Created</th>
+              <th class="text-center">Likes</th>
             </tr>
-            <% @tw_feed.each do |t| %>
-              <% if t.text %>
+            <% @tw_posts.each do |t| %>
+              <% if t.content %>
               <tr>
                 <td class="text-left">
-                  <%= t.text %>
+                  <%= t.content %>
                 </td>
                 <td> 
-                  <%= Date.parse(t.created_at.to_s) %>
+                  <%= t.likes %>
                 </td>
               </tr>
               <% end %>
