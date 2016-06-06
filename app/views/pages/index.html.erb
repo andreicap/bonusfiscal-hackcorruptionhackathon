@@ -1,5 +1,5 @@
 <div class="page-header" >
-  <h2 class="text-center"><%= @name %></h2>
+  <h2 class="text-center"><%= @user.first_name %></h2>
 </div>
 
 <div class="jumbotron">
@@ -30,13 +30,15 @@
                 <tr>
                   <th class="text-left" >Story</th>
                   <th class="text-center">Created</th>
+                  <th class="text-center">Likes</th>
                 </tr>
-                <% @fb_feed.each do |f| %>
-                  <% if f["message"] %>
+                <% @fb_posts.each do |p| %>
+                  <% if p.content %>
                   <tr>
                     <td class="text-left">
-                    <%= f["message"]%></td>
-                    <td><%= Date.parse(f["created_time"]) %></td>
+                    <%= p["content"]%></td>
+                    <td><%= Date.parse(p.date) %></td>
+                    <td><%= p.likes %></td>
                   </tr>
                   <% end %>
                 <% end %>
