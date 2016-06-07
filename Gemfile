@@ -27,13 +27,13 @@ gem "twitter"
 gem 'rest-client'
 gem 'instagram'
 gem 'easy_translate'
-gem 'unirest'
+
+
+gem 'sidekiq'
+
 
 gem 'jbuilder', '~> 2.0'
-
-
 gem 'nokogiri'
-
 gem 'puma'
 
 group :development, :test do

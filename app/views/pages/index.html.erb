@@ -54,6 +54,7 @@
             <tr>
               <th class="text-left" >Story</th>
               <th class="text-center">Likes</th>
+              <th class="text-center">Analysis</th>
             </tr>
             <% @ig_posts.each do |p| %>
               <% if p.content %>
@@ -64,6 +65,7 @@
                 <td> 
                   <%= p.likes %>
                 </td>
+                <td><%= link_to 'more', p %></td>
               </tr>
               <% end %>
             <% end %>
@@ -78,6 +80,7 @@
             <tr>
               <th class="text-left" >Story</th>
               <th class="text-center">Likes</th>
+              <th class="text-center">Analysis</th>
             </tr>
             <% @tw_posts.each do |t| %>
               <% if t.content %>
@@ -88,6 +91,8 @@
                 <td> 
                   <%= t.likes %>
                 </td>
+                <td><%= link_to 'more', t %></td>
+
               </tr>
               <% end %>
             <% end %>

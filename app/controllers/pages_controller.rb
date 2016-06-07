@@ -4,8 +4,6 @@ class PagesController < ApplicationController
   @name = "You did not provide any name yet"
   
   def index
-    #EasyTranslate.api_key = 'AIzaSyB1r3abwQulFPKY_RpduJlonl-x0wHLy7w'
-
     if @user.facebook
       create_fb
       @fb_posts = @user.feeds.find_by_provider("facebook").posts
