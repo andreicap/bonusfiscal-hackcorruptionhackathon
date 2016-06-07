@@ -1,5 +1,5 @@
 <div class="page-header" >
-  <h2 class="text-center"><%= @user.first_name %></h2>
+  <h1><%= @user.first_name %></h1>
 </div>
 
 <div class="jumbotron">
@@ -20,6 +20,7 @@
           <%= fa_icon "twitter", class: "fa-2x" %> 
         </a></li>
       <% end %>
+      </ul>
     </div>
 
     <div class="tab-content">
@@ -30,6 +31,7 @@
                 <tr>
                   <th class="text-left" >Story</th>
                   <th class="text-center">Likes</th>
+                  <th class="text-center">Analysis</th>
                 </tr>
                 <% @fb_posts.each do |p| %>
                   <% if p.content %>
@@ -37,6 +39,7 @@
                     <td class="text-left">
                     <%= p.content%></td>
                     <td><%= p.likes %></td>
+                    <td><%= link_to 'more', p %></td>
                   </tr>
                   <% end %>
                 <% end %>

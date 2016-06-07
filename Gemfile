@@ -27,6 +27,7 @@ gem "twitter"
 gem 'rest-client'
 gem 'instagram'
 gem 'easy_translate'
+gem 'unirest'
 
 gem 'jbuilder', '~> 2.0'
 

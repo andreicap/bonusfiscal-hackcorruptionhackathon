@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts, only: [:show]
   devise_for :users, :controllers => {:registrations => 'registrations', :omniauth_callbacks =>  "callbacks"}
   
   devise_scope :user do 
