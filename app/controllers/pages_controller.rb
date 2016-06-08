@@ -45,7 +45,7 @@ class PagesController < ApplicationController
         access_token = get_fb_auth.token
         puts graph = Koala::Facebook::API.new(access_token)
         @user.first_name = get_fb_auth.name
-        fb_feed = graph.get_connection("RailsGirls.Chisinau", "posts")
+        fb_feed = graph.get_connection("verge", "posts")
       rescue Exception => msg
         puts "--error--", msg
       end
@@ -56,6 +56,7 @@ class PagesController < ApplicationController
         p.f_id = post["id"]
         p.content = post["message"]
         p.date = post["created_time"]
+        p.comments = graph.get_connection(post["id"], "comments").to_s
         p.likes = graph.get_object(post["id"], :fields => "likes.summary(true)")["likes"]["summary"]["total_count"]
         p.save
       end

@@ -19,11 +19,25 @@ private
     end
 
     def get_alchemy
-      EasyTranslate.api_key = 'AIzaSyB1r3abwQulFPKY_RpduJlonl-x0wHLy7w'
+      # EasyTranslate.api_key = 'AIzaSyB1r3abwQulFPKY_RpduJlonl-x0wHLy7w'
 
-      @sentiments = JSON.parse(RestClient.post  "http://access.alchemyapi.com/calls/text/TextGetEmotion", 
-                                  {"apikey" => "a80cbd86063836c4449ee05bcae650761cf4fc70", 
-                                    "outputMode" => "json",
-                                    "text"=> EasyTranslate.translate(@post.content, to: :en)})     
+      comments = eval(@post.comments)
+      comms = ""
+      comments.each do |c|
+        comms<<" "<<c["message"]
+      end
+      if !@post.sentiments
+        puts "---chechking sentiment"
+        @sentiments = JSON.parse(RestClient.post  "http://access.alchemyapi.com/calls/text/TextGetEmotion", 
+                             {"apikey" => "a80cbd86063836c4449ee05bcae650761cf4fc70", 
+                               "outputMode" => "json",
+                               "text"=> comms})
+        puts "---chechking sentiment"
+        @post.sentiments = @sentiments
+        @post.save
+      end
+      @sentiment_data = eval(@post.sentiments)["docEmotions"]
+
+
     end
   end
