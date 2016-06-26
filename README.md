@@ -1,2 +1,2 @@
-# finalthesis
-Graduation thesis - TUM
+# media_project
+Media project for hackathon
