@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :posts, only: [:show]
+  
   devise_for :users, :controllers => {:registrations => 'registrations', :omniauth_callbacks =>  "callbacks"}
   
   devise_scope :user do 
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   resources :feeds, only: [:create, :destroy]
 
   get 'authentications' => 'authentications#index'
+
   root 'landing#index'
 
   get '/info', to: 'pages#index'
