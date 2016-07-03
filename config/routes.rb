@@ -1,20 +1,6 @@
 Rails.application.routes.draw do
-  resources :posts, only: [:show]
-  
-  devise_for :users, :controllers => {:registrations => 'registrations', :omniauth_callbacks =>  "callbacks"}
-  
-  devise_scope :user do 
-    get 'logout' => 'devise/sessions#destroy'
-  end
-  post '/auth/:provider/callback' => 'authentications#create'
-  resources :authentications, only: [:create, :destroy]
-  
-  resources :feeds, only: [:create, :destroy]
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get 'authentications' => 'authentications#index'
-
-  root 'landing#index'
-
-  get '/info', to: 'pages#index'
-
+  # Serve websocket cable requests in-process
+  # mount ActionCable.server => '/cable'
 end
