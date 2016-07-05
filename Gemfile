@@ -14,6 +14,8 @@ gem 'font-awesome-rails'
 
 gem 'uglifier', '>= 1.3.0'
 
+gem 'devise'
+gem 'devise-bootstrap-views'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
