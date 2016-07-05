@@ -19,5 +19,5 @@ production:
   encoding: unicode
   database: hackcor
   pool: 5
-  username: andreicap
+  username: 
   password: 
