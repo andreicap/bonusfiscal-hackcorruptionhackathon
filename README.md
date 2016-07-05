@@ -1,2 +1,1 @@
-# finalthesis
-Graduation thesis - TUM
+# hackcorruption lottery project
