@@ -11,6 +11,9 @@
         <a class="navbar-brand" href="/"> Lottery </a>
       </div>
       <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= link_to('Loterie', '/lottery') %>
+        </li>
         <% if citizen_signed_in? %>
           <li>
             <%= link_to('Înregistrare bilet', new_ticket_path) %>
