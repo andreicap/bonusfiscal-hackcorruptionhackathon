@@ -6,6 +6,7 @@ development:
   username: cartocri
   password: 
 
+
 test:
   adapter: postgresql
   encoding: unicode
@@ -19,5 +20,5 @@ production:
   encoding: unicode
   database: hackcor
   pool: 5
-  username: 
-  password: 
+  username:
+  password:
