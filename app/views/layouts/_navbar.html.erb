@@ -11,8 +11,13 @@
         <a class="navbar-brand" href="/"> Lottery </a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-<!--         <li><a href="/info">Info</a></li>
- -->        <% if citizen_signed_in? %>
+        <% if citizen_signed_in? %>
+          <li>
+            <%= link_to('Înregistrare bilet', new_ticket_path) %>
+          </li>
+          <li>
+            <%= link_to('Ticketele mele', tickets_path) %>
+          </li>
           <li>
           <%= link_to('Edit registration', edit_citizen_registration_path) %>
           </li>

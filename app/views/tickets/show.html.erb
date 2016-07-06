@@ -1,0 +1,32 @@
+<div class="container">
+  <table class="table table-tickets">
+    <tr>
+      <td>Cod fiscal</td>
+      <td><%= @ticket.company_idno %></td>
+    </tr>
+    <tr>
+      <td>Numarul bonului fiscal</td>
+      <td><%= @ticket.nr_bon_fiscal %></td>
+    </tr>
+    <tr>
+      <td>Pret pe bon</td>
+      <td><%= @ticket.price %></td>
+    </tr>
+    <tr>
+      <td>Compania</td>
+      <td><%= @ticket.company %></td>
+    </tr>
+    <% if Rails.env.development? %>
+    <tr>
+      <td>Citizen</td>
+      <td><%= @ticket.citizen.id %></td>
+    </tr>
+    <% end %> 
+  </table>
+</div>
+
+
+
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>
