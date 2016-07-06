@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706090132) do
+ActiveRecord::Schema.define(version: 20160706151555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,11 +35,12 @@ ActiveRecord::Schema.define(version: 20160706090132) do
   create_table "tickets", force: :cascade do |t|
     t.string   "company_idno"
     t.string   "nr_bon_fiscal"
-    t.string   "price",         default: ""
-    t.string   "company",       default: ""
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "price",           default: ""
+    t.string   "company",         default: ""
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "citizen_id"
+    t.date     "data_eliberarii"
   end
 
 end
