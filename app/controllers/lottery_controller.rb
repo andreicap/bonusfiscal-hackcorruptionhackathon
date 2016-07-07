@@ -4,5 +4,10 @@ class LotteryController < ApplicationController
   def index
     
   end
+
+  def generate_winners
+    puts "generator ============================"
+    redirect_to '/lottery'
+  end
   
 end
