@@ -1,5 +1,6 @@
 class Ticket < ApplicationRecord
   belongs_to :citizen
+  has_one :winner
 
 
   validates :company_idno, :nr_bon_fiscal, :price, :company, :data_eliberarii, :presence => { :message => "Câmpul este obligatoriu de completat"}
