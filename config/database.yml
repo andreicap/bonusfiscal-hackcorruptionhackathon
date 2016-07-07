@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: hackcor
   pool: 5
-  username: cartocri
+  username: andreicap
   password: 
 
 
@@ -12,7 +12,7 @@ test:
   encoding: unicode
   database: hackcor
   pool: 5
-  username: cartocri
+  username: andreicap
   password: 
 
 production:
