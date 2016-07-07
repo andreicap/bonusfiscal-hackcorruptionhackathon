@@ -16,6 +16,10 @@
       <td>Compania</td>
       <td><%= @ticket.company %></td>
     </tr>
+    <tr>
+      <td>Data eliberării</td>
+      <td><%= @ticket.data_eliberarii %></td>
+    </tr>
     <% if Rails.env.development? %>
     <tr>
       <td>Citizen</td>
@@ -24,8 +28,6 @@
     <% end %> 
   </table>
 </div>
-
-
 
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
