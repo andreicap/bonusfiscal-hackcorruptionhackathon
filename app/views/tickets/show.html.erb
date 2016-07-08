@@ -18,14 +18,14 @@
     </tr>
     <tr>
       <td>Data eliberării</td>
-      <td><%= @ticket.data_eliberarii %></td>
+      <td><%= @ticket.data_el %></td>
     </tr>
     <% if Rails.env.development? %>
     <tr>
       <td>Citizen</td>
       <td><%= @ticket.citizen.id %></td>
     </tr>
-    <% end %> 
+    <% end %>
   </table>
 </div>
 
