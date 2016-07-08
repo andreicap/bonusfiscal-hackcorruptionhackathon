@@ -29,14 +29,18 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     @ticket.citizen = current_citizen
-    respond_to do |format|
-      if @ticket.save
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
-        format.json { render :show, status: :created, location: @ticket }
-      else
-        format.html { render :new }
-        format.json { render json: @ticket.errors, status: :unprocessable_entity }
+    begin
+      respond_to do |format|
+        if @ticket.save
+          format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
+          format.json { render :show, status: :created, location: @ticket }
+        else
+          format.html { render :new }
+          format.json { render json: @ticket.errors, status: :unprocessable_entity }
+        end
       end
+    rescue ActiveRecord::RecordNotUnique
+      redirect_to new_ticket_path, alert: 'Bonul a fost deja înregistrat'
     end
   end
 

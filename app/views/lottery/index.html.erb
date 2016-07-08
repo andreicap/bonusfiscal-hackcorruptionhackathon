@@ -25,14 +25,14 @@
         </tr>
         <tr>
           <td>Data eliberării</td>
-          <td><%= t.ticket.data_eliberarii %></td>
+          <td><%= t.ticket.data_el %></td>
         </tr>
         <% if Rails.env.development? %>
           <tr>
             <td>Citizen</td>
             <td><%= t.ticket.citizen.id %></td>
           </tr>
-        <% end %> 
+        <% end %>
       </table>
     </div>
   <% end %>

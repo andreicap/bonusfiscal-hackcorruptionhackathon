@@ -12,10 +12,10 @@
 
   <div class="actions">
     <%= f.text_field :company_idno,label: "C.F / IDNO" %>
-    <%= f.text_field :nr_bon_fiscal, label: "Nr. bon fiscal" %>
+    <%= f.text_field :nr_bon_fiscal, label: "Numărul bonului fiscal" %>
     <%= f.text_field :price, label: "Suma totală a bonului fiscal" %>
-    <%= f.text_field :company, lable: "Denumirea întreprinderii" %>
-    <%= f.text_field :data_eliberarii, class: "datepicker" %>
+    <%= f.text_field :company, label: "Denumirea întreprinderii" %>
+    <%= f.text_field :data_el, label: "Data eliberării", class: "datepicker" %>
     <%= f.submit "Înregistrează" %>
   </div>
 <% end %>
