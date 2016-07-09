@@ -13,10 +13,12 @@
 <div class="container">
   <table class="table table-tickets">
     <% @winners.each do |t| %>
+      <% if t.ticket %>
       <tr>
         <td>Id-ul câștigător</td>
         <td><%= t.ticket.winning_id %></td>
       </tr>
+      <% end %>
     <% end %>
   </table>
 </div>
