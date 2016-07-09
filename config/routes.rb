@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :citizens
+  devise_for :citizens, :controllers => { registrations: 'registrations' }
   resources :tickets
   root 'pages#index'
   get '/lottery', to: 'lottery#index'

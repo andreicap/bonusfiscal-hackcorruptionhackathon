@@ -9,6 +9,15 @@
         <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, class: "form-control" %>
       </div>
+
+      <div class="form-group">
+        <%= f.label :Nume %>
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+        <br/>
+        <%= f.label :Prenume %>
+        <%= f.text_field :surname, autofocus: true, class: "form-control" %>
+      </div>
+
       <div class="form-group">
         <%= f.label :password %><br />
         <%= f.password_field :password, class: "form-control" %>
