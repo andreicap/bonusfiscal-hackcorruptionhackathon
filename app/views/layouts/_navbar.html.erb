@@ -15,7 +15,7 @@
       <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <%= link_to('Loterie', '/lottery') %>
+            <%= link_to('Tombolă', '/lottery') %>
           </li>
           <% if citizen_signed_in? %>
             <li>
@@ -26,6 +26,9 @@
             </li>
             <li>
               <%= link_to('Raportează', '/report') %>
+            </li>
+            <li>
+            <%= link_to('F.A.Q', '/faq') %>
             </li>
             <li>
             <%= link_to('Editează contul', edit_citizen_registration_path) %>
