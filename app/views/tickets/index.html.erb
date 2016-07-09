@@ -5,8 +5,8 @@
       <table class="table table-tickets ">
         <% i = 0 %>
         <% @tickets.each do |t| %>
-          <%i = i+1%>
           <% if t.citizen == current_citizen %>
+            <%i = i+1%>
             <tr class='clickable-row' data-href = <%= ticket_path(t) %>>
               <td><%= i %></td>
               <td cursor="pointer"><%= t.winning_id %></td>
