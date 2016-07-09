@@ -28,8 +28,16 @@
               <%= link_to('Raportează', '/report') %>
             </li>
             <li>
-            <%= link_to('Editează contul', edit_citizen_registration_path) %>
-            </li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contul meu<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to('Editează contul', edit_citizen_registration_path) %></li>
+            <li><%= link_to('Ieșire', destroy_citizen_session_path, :method => :delete) %>   </li>
+<!--             <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li> -->
+          </ul>
           <% else %>
             <li>
             <%= link_to('Înregistrează-te', new_citizen_registration_path)  %>
@@ -38,7 +46,7 @@
 
           <% if citizen_signed_in? %>
             <li>
-              <%= link_to('Ieșire', destroy_citizen_session_path, :method => :delete) %>        
+                   
             </li>
           <% else %>
             <li>
