@@ -1,4 +1,4 @@
-ro:
+en:
   devise:
     confirmations:
       confirmed: "Contul tău a fost confirmat cu succes. Ești acum autentificat."

@@ -10,18 +10,54 @@
 <% end %>
 <% if !@winners.empty? %>
 
-<div class="container">
+<!-- Small win -->
+<div class="container col-md-4">
   <table class="table table-tickets">
+      <tr>
+        <td align="center">De la 10 la 99 lei</td>
+      </tr>
     <% @winners.each do |t| %>
       <% if t.ticket %>
       <tr>
-        <td>Id-ul câștigător</td>
         <td><%= t.ticket.winning_id %></td>
       </tr>
       <% end %>
     <% end %>
   </table>
 </div>
+
+<!-- Medium win -->
+<div class="container col-md-4">
+  <table class="table table-tickets">
+      <tr>
+        <td align="center">De la 100 la 499 lei</td>
+      </tr>
+    <% @winners.each do |t| %>
+      <% if t.ticket %>
+      <tr>
+        <td><%= t.ticket.winning_id %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+
+<!-- Biggest win -->
+<div class="container col-md-4">
+  <table class="table table-tickets">
+      <tr>
+        <td align="center">De la 500 lei </td>
+      </tr>
+    <% @winners.each do |t| %>
+      <% if t.ticket %>
+      <tr>
+        <td><%= t.ticket.winning_id %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+
 
 <%else%>
 <h3>Nu sunt tichete câștigătoare</h3>

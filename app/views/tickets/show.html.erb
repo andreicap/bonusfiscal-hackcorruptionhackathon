@@ -21,7 +21,7 @@
       <td><%= @ticket.data_el %></td>
     </tr>
     <tr>
-      <td>Id-ul câștigător</td>
+      <td>Cod de participare</td>
       <td><%= @ticket.winning_id %></td>
     </tr>
     <% if Rails.env.development? %>
@@ -32,5 +32,3 @@
     <% end %>
   </table>
 </div>
-
-<%= link_to 'Back', tickets_path %>
