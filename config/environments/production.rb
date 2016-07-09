@@ -61,7 +61,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     :address              => 'mail.privateemail.com',
-    :port                 =>  25,
+    :port                 =>  465,
     :user_name            => 'suport_mail',
     :password             => 'generator123',
     :authentication       => :login,
