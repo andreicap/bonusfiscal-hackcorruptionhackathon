@@ -24,6 +24,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap-datepicker-rails'
+gem 'digest'
 
 group :development, :test do
   gem 'byebug', platform: :mri

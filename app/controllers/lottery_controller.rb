@@ -3,7 +3,7 @@ class LotteryController < ApplicationController
   before_action :set_tickets, :set_winners
 
   def index
- 
+
   end
 
   def generate_winners
@@ -11,7 +11,7 @@ class LotteryController < ApplicationController
   end
 
 private
-  
+
   def winner_generator
 
     ids = @tickets.ids
@@ -36,5 +36,5 @@ private
   def set_winners
     @winners = Winner.all
   end
-  
+
 end
