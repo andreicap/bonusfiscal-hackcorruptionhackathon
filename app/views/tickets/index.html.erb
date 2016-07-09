@@ -26,19 +26,18 @@
           <td><%= t.data_el %></td>
         </tr>
         <% if Rails.env.development? %>
-        <tr>
-          <td>Citizen</td>
-          <td><%= t.citizen.id %></td>
-        </tr>
+          <tr>
+            <td>Citizen</td>
+            <td><%= t.citizen.id %></td>
+          </tr>
+        <% end %>
         <tr>
           <td>
             <%= link_to 'Show', t %>
-            <%= link_to 'Edit', edit_ticket_path(t) %>
             <%= link_to 'Destroy', t, method: :delete, data: { confirm: 'Are you sure?' } %>
           </td>
           <td></td>
         </tr>
-        <% end %>
       </table>
     </div>
     <% end %>

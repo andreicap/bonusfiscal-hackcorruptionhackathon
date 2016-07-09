@@ -21,11 +21,14 @@
             <%= link_to('Ticketele mele', tickets_path) %>
           </li>
           <li>
-          <%= link_to('Edit registration', edit_citizen_registration_path) %>
+            <%= link_to('Raportează', '/report') %>
+          </li>
+          <li>
+          <%= link_to('Editează registrarea', edit_citizen_registration_path) %>
           </li>
         <% else %>
           <li>
-          <%= link_to('Register', new_citizen_registration_path)  %>
+          <%= link_to('Înregistreazăte', new_citizen_registration_path)  %>
           </li>
         <% end %>
 
