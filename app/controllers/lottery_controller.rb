@@ -17,9 +17,6 @@ private
     ids = @tickets.ids
     ids_that_won = Winner.pluck(:ticket_id)
     ids_pool = ids-ids_that_won
-    puts "ids = #{ids}"
-    puts "ids_that_won = #{ids_that_won}"
-    puts "ids_pool = #{ids_pool}"
     if ids_pool.empty?
       flash[:notice] = "Tichetele s-au consumat"
       redirect_to '/lottery'

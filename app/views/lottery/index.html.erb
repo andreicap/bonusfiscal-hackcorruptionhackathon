@@ -1,28 +1,30 @@
-<h2>Câștigători</h2>
-
-<% if citizen_signed_in? %>
-  <% if current_citizen.email == "cristian.cartofeanu@gmail.com" || current_citizen.email == "macrinici.d@gmail.com" || current_citizen.email == "andrei.capastru@gmail.com" %>
-    <div align="center">
-    <a href="/generatewinners" class="btn btn-info" role="button">Generează câștigătorii</a>
-    </div>
-    <br>
-  <% end %>
-<% end %>
-<% if !@winners.empty? %>
-
 <div class="container">
-  <table class="table table-tickets">
-    <% @winners.each do |t| %>
-      <% if t.ticket %>
-      <tr>
-        <td>Id-ul câștigător</td>
-        <td><%= t.ticket.winning_id %></td>
-      </tr>
-      <% end %>
-    <% end %>
-  </table>
-</div>
+  <h2>Câștigători</h2>
 
-<%else%>
-<h3>Nu sunt tichete câștigătoare</h3>
-<% end %>
+  <% if citizen_signed_in? %>
+    <% if current_citizen.email == "cristian.cartofeanu@gmail.com" || current_citizen.email == "macrinici.d@gmail.com" || current_citizen.email == "andrei.capastru@gmail.com" %>
+      <div align="center">
+      <a href="/generatewinners" class="btn btn-info" role="button">Generează câștigătorii</a>
+      </div>
+      <br>
+    <% end %>
+  <% end %>
+  <% if !@winners.empty? %>
+
+  <div class="container">
+    <table class="table table-tickets">
+      <% @winners.each do |t| %>
+        <% if t.ticket %>
+        <tr>
+          <td>Id-ul câștigător</td>
+          <td><%= t.ticket.winning_id %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+
+  <%else%>
+  <h3>Nu sunt tichete câștigătoare</h3>
+  <% end %>
+</div>

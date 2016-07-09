@@ -1,31 +1,32 @@
-
-<h1>Tickets</h1>
-<% if !@tickets.empty? %>
-  <div class="container">
-    <table class="table table-tickets ">
-      <% @tickets.each do |t| %>
-        <% if t.citizen == current_citizen %>
-        <tr class='clickable-row' data-href = <%= ticket_path(t) %>>
-          <td>Id-ul câștigător</td>
-          <td><%= t.winning_id %></td>
-          <td>
-            <%= link_to 'Detalii', t %>
-            <%= link_to 'Șterge', t, method: :delete, data: { confirm: 'Sunteți sigur?' } %>
-          </td>
-          <td></td>
-        </tr>
+<div class="container">
+  <h1>Tickets</h1>
+  <% if !@tickets.empty? %>
+    <div class="container">
+      <table class="table table-tickets ">
+        <% @tickets.each do |t| %>
+          <% if t.citizen == current_citizen %>
+          <tr class='clickable-row' data-href = <%= ticket_path(t) %>>
+            <td>Id-ul câștigător</td>
+            <td><%= t.winning_id %></td>
+            <td>
+              <%= link_to 'Detalii', t %>
+              <%= link_to 'Șterge', t, method: :delete, data: { confirm: 'Sunteți sigur?' } %>
+            </td>
+            <td></td>
+          </tr>
+          <% end %>
         <% end %>
-      <% end %>
-    </table>
-  </div>
-<%else%>
-  <h3>Nu sunt tichete înregistrate</h3>
-<% end %>
+      </table>
+    </div>
+  <%else%>
+    <h3>Nu sunt tichete înregistrate</h3>
+  <% end %>
 
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-    $(".clickable-row").click(function() {
-      window.document.location = $(this).data("href");
+  <script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+      });
     });
-  });
-</script>
+  </script>
+</div>
