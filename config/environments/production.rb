@@ -62,7 +62,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => 'mail.privateemail.com',
-    :port                 =>  26,
+    :port                 =>  465,
     :user_name            => 'support@bonusfiscal.me',
     :password             => 'generator123',
     :authentication       => :plain,
