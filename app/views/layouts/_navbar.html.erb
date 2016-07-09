@@ -1,46 +1,54 @@
-<nav class="navbar navbar-default topnav" role="navigation"">
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
+     <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+              Menu <i class="fa fa-bars"></i>
+          </button>
+      </div>
       <a class="navbar-brand" href='/' rel="home" title="Lottery">
         <%= image_tag("logo_bonus.png", 
         :alt => "brand", 
-        :style => "max-width:120px; margin-top: -12px;") %>
+        :style => "max-width:120px; margin-top: -14px;") %>
       </a>
       </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <%= link_to('Loterie', '/lottery') %>
-        </li>
-        <% if citizen_signed_in? %>
+      <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+        <ul class="nav navbar-nav navbar-right">
           <li>
-            <%= link_to('Înregistrare bilet', new_ticket_path) %>
+            <%= link_to('Loterie', '/lottery') %>
           </li>
-          <li>
-            <%= link_to('Ticketele mele', tickets_path) %>
-          </li>
-          <li>
-            <%= link_to('Raportează', '/report') %>
-          </li>
-          <li>
-          <%= link_to('Editează contul', edit_citizen_registration_path) %>
-          </li>
-        <% else %>
-          <li>
-          <%= link_to('Înregistrează-te', new_citizen_registration_path)  %>
-          </li>
-        <% end %>
+          <% if citizen_signed_in? %>
+            <li>
+              <%= link_to('Înregistrare bilet', new_ticket_path) %>
+            </li>
+            <li>
+              <%= link_to('Ticketele mele', tickets_path) %>
+            </li>
+            <li>
+              <%= link_to('Raportează', '/report') %>
+            </li>
+            <li>
+            <%= link_to('Editează contul', edit_citizen_registration_path) %>
+            </li>
+          <% else %>
+            <li>
+            <%= link_to('Înregistrează-te', new_citizen_registration_path)  %>
+            </li>
+          <% end %>
 
-        <% if citizen_signed_in? %>
-          <li>
-            <%= link_to('Ieșire', destroy_citizen_session_path, :method => :delete) %>        
-          </li>
-        <% else %>
-          <li>
-            <%= link_to('Conectare', new_citizen_session_path)  %>  
-          </li>
-        <% end %>
-        
-      </ul>
+          <% if citizen_signed_in? %>
+            <li>
+              <%= link_to('Ieșire', destroy_citizen_session_path, :method => :delete) %>        
+            </li>
+          <% else %>
+            <li>
+              <%= link_to('Conectare', new_citizen_session_path)  %>  
+            </li>
+          <% end %>
+          
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
+
