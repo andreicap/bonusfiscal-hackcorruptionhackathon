@@ -13,7 +13,6 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'support@bonusfiscal.me'
-  config.i18n.default_locale = :ro 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
