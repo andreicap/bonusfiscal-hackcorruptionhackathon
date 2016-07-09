@@ -64,7 +64,7 @@ Rails.application.configure do
     :port                 =>  26,
     :user_name            => 'support@bonusfiscal.me',
     :password             => 'generator123',
-    :authentication       => :plain,
+    :authentication       => :login,
     :enable_starttls_auto => true
   }
   # Ignore bad email addresses and do not raise email delivery errors.
