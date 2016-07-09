@@ -30,6 +30,8 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
     @ticket.citizen = current_citizen
     @ticket.winning_id = generate_winning_id @ticket
+    @ticket.ticket_category = assign_ticket_category @ticket
+
     begin
       respond_to do |format|
         if @ticket.save
@@ -80,7 +82,7 @@ class TicketsController < ApplicationController
       params.require(:ticket).permit!
     end
 
-  private
+    private
 
     def generate_winning_id ticket
       combination = ticket.company_idno + ticket.nr_bon_fiscal + ticket.data_el
@@ -88,5 +90,16 @@ class TicketsController < ApplicationController
       winning_id
     end
 
+    def assign_ticket_category ticket
+      price = ticket.price.to_f
+      if price.between?(10,99)
+        category = "low"
+      elsif price.between?(100, 499)
+        category = "medium"
+      else
+        category = "high"
+      category
+      end
+    end
 
-  end
+    end
