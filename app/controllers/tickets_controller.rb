@@ -11,7 +11,7 @@ class TicketsController < ApplicationController
   # GET /tickets/1.json
   def show
     if @ticket.citizen != current_citizen
-        redirect_to tickets_path, notice: 'Not allowed'
+      redirect_to tickets_path, notice: 'Not allowed'
     end
   end
 
@@ -29,6 +29,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     @ticket.citizen = current_citizen
+    @ticket.winning_id = generate_winning_id @ticket
     begin
       respond_to do |format|
         if @ticket.save
@@ -79,4 +80,13 @@ class TicketsController < ApplicationController
       params.require(:ticket).permit!
     end
 
-end
+  private
+
+    def generate_winning_id ticket
+      combination = ticket.company_idno + ticket.nr_bon_fiscal + ticket.data_el
+      winning_id = Digest::MD5.hexdigest combination
+      winning_id
+    end
+
+
+  end

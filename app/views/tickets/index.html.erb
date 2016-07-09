@@ -1,51 +1,31 @@
 
 <h1>Tickets</h1>
 <% if !@tickets.empty? %>
-  <% @tickets.each do |t| %>
-    <% if t.citizen == current_citizen %>
-    <div class="container">
-      <table class="table table-tickets ">
-        <tr>
-          <td>Cod fiscal</td>
-          <td><%= t.company_idno %></td>
-        </tr>
-        <tr>
-          <td>Numarul bonului fiscal</td>
-          <td><%= t.nr_bon_fiscal %></td>
-        </tr>
-        <tr>
-          <td>Pret pe bon</td>
-          <td><%= t.price %></td>
-        </tr>
-        <tr>
-          <td>Compania</td>
-          <td><%= t.company %></td>
-        </tr>
-        <tr>
-          <td>Data eliberării</td>
-          <td><%= t.data_el %></td>
-        </tr>
-        <% if Rails.env.development? %>
-          <tr>
-            <td>Citizen</td>
-            <td><%= t.citizen.id %></td>
-          </tr>
-        <% end %>
-        <tr>
+  <div class="container">
+    <table class="table table-tickets ">
+      <% @tickets.each do |t| %>
+        <% if t.citizen == current_citizen %>
+        <tr class='clickable-row' data-href = <%= ticket_path(t) %>>
+          <td>Id-ul câștigător</td>
+          <td><%= t.winning_id %></td>
           <td>
-            <%= link_to 'Show', t %>
-            <%= link_to 'Destroy', t, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Detalii', t %>
+            <%= link_to 'Șterge', t, method: :delete, data: { confirm: 'Sunteți sigur?' } %>
           </td>
           <td></td>
         </tr>
-      </table>
-    </div>
-    <% end %>
-  <% end %>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
 <%else%>
   <h3>Nu sunt tichete înregistrate</h3>
 <% end %>
 
-<br>
-
-<%= link_to 'New Ticket', new_ticket_path %>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+      window.document.location = $(this).data("href");
+    });
+  });
+</script>
