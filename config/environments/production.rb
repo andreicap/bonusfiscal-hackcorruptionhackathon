@@ -61,8 +61,8 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     :address              => 'mail.privateemail.com',
-    :port                 =>  26,
-    :user_name            => 'support@bonusfiscal.me',
+    :port                 =>  25,
+    :user_name            => 'suport_mail',
     :password             => 'generator123',
     :authentication       => :login,
     :enable_starttls_auto => true
