@@ -4,4 +4,9 @@
 
 table {
   table-layout: fixed;
+  word-wrap: break-word;
+}
+
+.clickable-row {
+	cursor: pointer;
 }

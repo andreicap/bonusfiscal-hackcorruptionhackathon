@@ -1,6 +1,6 @@
 <div class="panel panel-default devise-bs">
   <div class="panel-heading">
-    <h4><%= t('.sign_up', :default => "Sign up") %></h4>
+    <h4>Înregistreazăte</h4>
   </div>
   <div class="panel-body">
     <%= bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form" }) do |f| %>
@@ -19,7 +19,7 @@
       <div class="form-group">
         <%= f.password_field :password_confirmation, label: "Confirmă parola", class: "form-control" %>
       </div>
-      <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary" %>
+      <%= f.submit "Înregistreazăte", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

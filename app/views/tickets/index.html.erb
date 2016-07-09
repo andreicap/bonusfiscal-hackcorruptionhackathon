@@ -1,19 +1,20 @@
 
-<h1>Tickets</h1>
+<h1>Bonuri fiscale</h1>
 <% if !@tickets.empty? %>
   <div class="container">
     <table class="table table-tickets ">
+      <% i = 0 %>
       <% @tickets.each do |t| %>
+        <%i = i+1%>
         <% if t.citizen == current_citizen %>
-        <tr class='clickable-row' data-href = <%= ticket_path(t) %>>
-          <td>Id-ul câștigător</td>
-          <td><%= t.winning_id %></td>
-          <td>
-            <%= link_to 'Detalii', t %>
-            <%= link_to 'Șterge', t, method: :delete, data: { confirm: 'Sunteți sigur?' } %>
-          </td>
-          <td></td>
-        </tr>
+          <tr class='clickable-row' data-href = <%= ticket_path(t) %>>
+            <td><%= i %></td>
+            <td cursor="pointer"><%= t.winning_id %></td>
+            <td>
+              <%= link_to 'Detalii', t %>
+              <%= link_to 'Șterge', t, method: :delete, data: { confirm: 'Sunteți sigur?' } %>
+            </td>
+          </tr>
         <% end %>
       <% end %>
     </table>

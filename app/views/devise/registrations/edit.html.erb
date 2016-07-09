@@ -1,6 +1,6 @@
 <div class="panel panel-default devise-bs">
   <div class="panel-heading">
-    <h4><%= t('.title', :resource => resource_class.model_name.human , :default => "Edit #{resource_name.to_s.humanize}") %></h4>
+    <h4>Editează contul</h4>
   </div>
   <div class="panel-body">
     <%= bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
@@ -20,11 +20,9 @@
       <div class="form-group">
         <%= f.password_field :current_password, label: "Parola curentă (avem nevoie de ia pentru a confirma modificările)", class: "form-control" %>
       </div>
-      <%= f.submit t('.update', :default => "Update"), class: "btn btn-primary" %>
+      <%= f.submit "Actualizează", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
 
-<p><%= t('.unhappy', :default => 'Unhappy') %>? <%= link_to t('.cancel_my_account', :default => "Cancel my account"), registration_path(resource_name), :data => { :confirm => t('.are_you_sure', :default => "Are you sure?") }, :method => :delete %>.</p>
-
-<%= link_to t('.back', :default => 'Back'), :back %>
+<p><%= "Ești nemulțumit?" %> <%= link_to "Anulează contul meu", registration_path(resource_name), :data => { :confirm => "Ești sigur?"}, :method => :delete %>.</p>
