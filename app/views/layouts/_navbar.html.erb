@@ -21,21 +21,24 @@
             <%= link_to('Ticketele mele', tickets_path) %>
           </li>
           <li>
-          <%= link_to('Edit registration', edit_citizen_registration_path) %>
+            <%= link_to('Raportează', '/report') %>
+          </li>
+          <li>
+          <%= link_to('Editează contul', edit_citizen_registration_path) %>
           </li>
         <% else %>
           <li>
-          <%= link_to('Register', new_citizen_registration_path)  %>
+          <%= link_to('Înregistrează-te', new_citizen_registration_path)  %>
           </li>
         <% end %>
 
         <% if citizen_signed_in? %>
           <li>
-            <%= link_to('Logout', destroy_citizen_session_path, :method => :delete) %>        
+            <%= link_to('Ieșire', destroy_citizen_session_path, :method => :delete) %>        
           </li>
         <% else %>
           <li>
-            <%= link_to('Login', new_citizen_session_path)  %>  
+            <%= link_to('Conectare', new_citizen_session_path)  %>  
           </li>
         <% end %>
         
