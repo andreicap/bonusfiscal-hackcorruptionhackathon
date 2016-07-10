@@ -1,0 +1,29 @@
+<div class="container">
+
+  <h4>Detalii despre raportare</h4>
+  <table class="table table-tickets">
+
+      <tr>
+        <td>Denumirea instituției</td>
+        <td><%= @submission.institution_name %></td>
+      </tr>
+      <tr>
+        <td>Orașul</td>
+        <td><%= @submission.city %></td>
+      </tr>
+      <tr>
+        <td>Adresa</td>
+        <td><%= @submission.address %></td>
+      </tr>
+      <tr>
+        <td>Descrierea raportării</td>
+        <td><%= @submission.description %></td>
+      </tr>
+      <% if Rails.env.development? %>
+      <tr>
+        <td>Id-ul cetățeanului</td>
+        <td><%= @submission.citizen.id %></td>
+      </tr>
+      <% end %>
+  </table>
+</div>
