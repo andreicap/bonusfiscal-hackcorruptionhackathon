@@ -1,0 +1,12 @@
+<div class="container">
+<%= bootstrap_form_for(@submission) do |f| %>
+  <div class="actions">
+    <%= f.text_field :institution_name, label: "Numele instituției" %>
+    <%= f.text_field :city, label: "Orașul instituției" %>
+    <%= f.text_field :address, label: "Adresa instituției" %>
+    <%= f.text_area :description, label: "Descrierea raportării" %>
+    <%= f.submit "Raportează", class: "btn btn-primary"%>
+    <a href="/submissions" class="btn btn-success" > Vezi toate raportările </a>
+  </div>
+<% end %>
+</div>

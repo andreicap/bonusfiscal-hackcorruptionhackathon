@@ -11,7 +11,7 @@ class TicketsController < ApplicationController
   # GET /tickets/1.json
   def show
     if @ticket.citizen != current_citizen
-      redirect_to tickets_path, notice: 'Not allowed'
+      redirect_to tickets_path, notice: 'Acces interzis.'
     end
   end
 
@@ -35,7 +35,7 @@ class TicketsController < ApplicationController
     begin
       respond_to do |format|
         if @ticket.save
-          format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
+          format.html { redirect_to @ticket, notice: 'Bonul a fost creat cu succes.' }
           format.json { render :show, status: :created, location: @ticket }
         else
           format.html { render :new }
@@ -43,7 +43,7 @@ class TicketsController < ApplicationController
         end
       end
     rescue ActiveRecord::RecordNotUnique
-      redirect_to new_ticket_path, alert: 'Bonul a fost deja înregistrat'
+      redirect_to new_ticket_path, alert: 'Bonul a fost deja înregistrat.'
     end
   end
 
@@ -52,7 +52,7 @@ class TicketsController < ApplicationController
   def update
     respond_to do |format|
       if @ticket.update(ticket_params)
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
+        format.html { redirect_to @ticket, notice: 'Bonul a fost actualizat cu succes.' }
         format.json { render :show, status: :ok, location: @ticket }
       else
         format.html { render :edit }
@@ -66,7 +66,7 @@ class TicketsController < ApplicationController
   def destroy
     @ticket.destroy
     respond_to do |format|
-      format.html { redirect_to tickets_url, notice: 'Ticket was successfully destroyed.' }
+      format.html { redirect_to tickets_url, notice: 'Bonul a fost șters cu succes.' }
       format.json { head :no_content }
     end
   end
