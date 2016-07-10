@@ -1,63 +1,83 @@
 <div class="container">
-  <h2>Câștigători</h2>
-
-  <% if citizen_signed_in? %>
-    <% if current_citizen.email == "cristian.cartofeanu@gmail.com" || current_citizen.email == "macrinici.d@gmail.com" || current_citizen.email == "andrei.capastru@gmail.com" %>
-      <div align="center">
-        <a href="/generatewinners" class="btn btn-info" role="button">Generează câștigătorii</a>
-      </div>
-    <br>
+    
+    <h2>Câștigători</h2>
+    <% if citizen_signed_in? %>
+      <% if current_citizen.email == "cristian.cartofeanu@gmail.com" || current_citizen.email == "macrinici.d@gmail.com" || current_citizen.email == "andrei.capastru@gmail.com" %>
+        <div align="center">
+          <a href="/generatewinners" class="btn btn-info" role="button">Generează câștigătorii</a>
+        </div>  
+        <br>
+      <% end %>
     <% end %>
-  <% end %>
-  <% if !@winners.empty? %>
+    <% if !@winners.empty? %>
+    <!-- Plans -->
+    <section id="plans">
+        <div class="container">
+            <div class="row">
 
-    <div class="container col-md-4">
-      <table class="table table-tickets">
-        <tr>
-          <td align="center">De la 10 la 99 lei</td>
-        </tr>
-        <% @winners.each do |t| %>
-          <% if t.ticket.ticket_category == "low" %>
-            <tr>
-              <td align="center"><%= t.ticket.citizen.name %> - <%= t.ticket.winning_id %></td>
-            </tr>
-          <% end %>
-        <% end %>
-      </table>
-    </div>
+                <!-- item -->
+                <div class="col-md-4 text-center">
+                    <div class="panel panel-success panel-pricing">
+                        <div class="panel-heading">
+                            <h4>De la 10 la 99 lei</h4>
+                        </div>
+                        <% @winners.each do |t| %>
+                          <% if t.ticket.ticket_category == "low" %>
+                            <ul class="list-group text-center">
+                              <li class="list-group-item">
+                              <%= t.ticket.citizen.name %> - <%= t.ticket.winning_id %>
+                              </li>
+                            </ul>
+                          <% end %>
+                        <% end %>
+                    </div>
+                </div>
+                <!-- /item -->
 
-    <!-- Medium win -->
-    <div class="container col-md-4">
-      <table class="table table-tickets">
-        <tr>
-          <td align="center">De la 100 la 499 lei</td>
-        </tr>
-        <% @winners.each do |t| %>
-          <% if t.ticket.ticket_category == "medium" %>
-            <tr>
-              <td align="center"><%= t.ticket.citizen.name %> - <%= t.ticket.winning_id %></td>
-            </tr>
-          <% end %>
-        <% end %>
-      </table>
-    </div>
+                <!-- item -->
+                <div class="col-md-4 text-center">
+                    <div class="panel panel-warning panel-pricing">
+                        <div class="panel-heading">
+                            <h4>De la 100 la 499 lei</h4>
+                        </div>
+                        <% @winners.each do |t| %>
+                          <% if t.ticket.ticket_category == "medium" %>
+                            <ul class="list-group text-center">
+                              <li class="list-group-item">
+                              <%= t.ticket.citizen.name %> - <%= t.ticket.winning_id %>
+                              </li>
+                            </ul>
+                          <% end %>
+                        <% end %>
+                    </div>
+                </div>
+                <!-- /item -->
 
-    <!-- Biggest win -->
-    <div class="container col-md-4">
-      <table class="table table-tickets">
-        <tr>
-          <td align="center">De la 500 lei </td>
-        </tr>
-        <% @winners.each do |t| %>
-          <% if t.ticket.ticket_category == "high" %>
-            <tr>
-              <td align="center"><%= t.ticket.citizen.name %> - <%=t.ticket.winning_id %></td>
-            </tr>
-          <% end %>
-        <% end %>
-      </table>
-    </div>
+                <!-- item -->
+                <div class="col-md-4 text-center">
+                    <div class="panel panel-danger panel-pricing">
+                        <div class="panel-heading">
+                            <h4>De la 500 lei</h4>
+                        </div>
+                        <% @winners.each do |t| %>
+                          <% if t.ticket.ticket_category == "high" %>
+                            <ul class="list-group text-center">
+                              <li class="list-group-item">
+                              <%= t.ticket.citizen.name %> - <%= t.ticket.winning_id %>
+                              </li>
+                            </ul>
+                          <% end %>
+                        <% end %>
+                    </div>
+                </div>
+                <!-- /item -->
+
+            </div>
+        </div>
+    </section>
 
   <%else%>
     <h4 style="color:#ff9933;">Nu sunt tichete câștigătoare</h4>
   <% end %>
+
+</div>
