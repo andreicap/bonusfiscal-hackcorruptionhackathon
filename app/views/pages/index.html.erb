@@ -36,6 +36,15 @@
   <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
       <%= image_tag("intro.png", class: "img-responsive img-fluid",style: "max-width: 100%;") %>
+        <% if citizen_signed_in? %>
+          <table align="center">
+           <tr>
+            <td>
+              <a href="/tickets/new" class="btn btn-primary btn-lg"> Adaugă bonul </a>
+            </td>
+          </tr>
+        </table>
+        <% end %>
         <div class="fa-stack fa-2x" align="center" style="padding-top: 10px">
           <a href="#categories"  class="page-scroll" >
             <i class="fa fa-angle-double-down animated" id="fa-color"></i>
