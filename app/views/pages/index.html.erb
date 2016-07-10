@@ -3,20 +3,32 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-                        <!-- <h1 class="brand-heading">Bonus Fiscal</h1>
-                        <p class="intro-text">Just submit it.</p> -->
-         
-              <%= image_tag("logo_bonus.png", class: "img-responsive img-fluid", style: "max-width: 100%;") %>
+
+              <%= image_tag("logo_bonus.png", class: "img-responsive img-fluid", style: "max-width: 100%;; ") %>
+            <br/>
+            <p class="title-logo">Lorem</p>
+            <hr class="light">
 
           <% if !citizen_signed_in? %>
-            <div>
-              <br>
+          <table align="center">
+           <tr>
+            <td>
               <a href="/citizens/sign_up" class="btn btn-warning btn-lg"> Înregistrează-te </a>
-            </div>
+             </td>
+             <td>
+             ___________________
+             </td>
+             <td>
+              <a href="/citizens/sign_in" class="btn btn-success btn-lg "> Conectează-te </a>
+              </td>
+            </tr>
+          </table>
           <% end %>
+          <p>
           <a href="#about" class="btn btn-circle page-scroll">
             <i class="fa fa-angle-double-down animated"></i>
           </a>
+          </p>
         </div>
       </div>
     </div>
