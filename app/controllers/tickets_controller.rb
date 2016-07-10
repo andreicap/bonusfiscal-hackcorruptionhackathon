@@ -35,7 +35,7 @@ class TicketsController < ApplicationController
     begin
       respond_to do |format|
         if @ticket.save
-          format.html { redirect_to @ticket, notice: 'Bonul a fost creat cu succes.' }
+          format.html { redirect_to @ticket, notice: 'Vă mulțumim pentru înregistrarea bonului. Participarea dumneavoastră contează.' }
           format.json { render :show, status: :created, location: @ticket }
         else
           format.html { render :new }

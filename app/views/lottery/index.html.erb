@@ -1,6 +1,7 @@
 <div class="container">
     
     <h2>Câștigători</h2>
+    
     <% if citizen_signed_in? %>
       <% if current_citizen.email == "cristian.cartofeanu@gmail.com" || current_citizen.email == "macrinici.d@gmail.com" || current_citizen.email == "andrei.capastru@gmail.com" %>
         <div align="center">
@@ -9,12 +10,8 @@
         <br>
       <% end %>
     <% end %>
+
     <% if !@winners.empty? %>
-   <!--  <div align="center">
-      <%= link_to "reload", "" %>
-      <a href="/lottery" class="btn btn-success" role="button">Actualizează</a>
-    </div> -->
-    <!-- Plans -->
     <section id="plans">
         <div class="container">
             <div class="row">
