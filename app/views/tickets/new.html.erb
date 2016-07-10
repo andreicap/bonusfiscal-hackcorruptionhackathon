@@ -1,5 +1,12 @@
 <div class="container">
 
 <h2>Înregistrare bon</h2>
-  <%= render 'form', ticket: @ticket %>
+	<div class="container col-md-6">
+  	<%= render 'form', ticket: @ticket %>
+  </div>
+  <div class="container col-md-6" align="center">
+  	<%= image_tag("receipt_model.png", 
+              :alt => "brand", 
+              :style => "max-width:70%; margin-top: -14px;") %>
+  </div>
 </div>
