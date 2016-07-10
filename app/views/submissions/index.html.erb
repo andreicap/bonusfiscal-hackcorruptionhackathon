@@ -1,17 +1,16 @@
 <div class="container">
   <h2>Raportări</h2>
   <% if !@submissions.empty? %>
-    <div class="container">
-      <table class="table table-tickets ">
+    <div class="container col-md-6 col-md-offset-3">
+      <table class="table">
         <% i = 0 %>
         <% @submissions.each do |s| %>
             <%i = i+1%>
             <tr class='clickable-row' data-href = <%= submission_path(s) %>>
-              <td><%= i %></td>
+              <td ><%= i %></td>
               <td cursor="pointer"><%= s.institution_name %></td>
               <td>
                 <%= link_to 'Detalii', s %>
-                <%= link_to 'Șterge', s, method: :delete, data: { confirm: 'Sunteți sigur?' } %>
               </td>
             </tr>
         <% end %>
