@@ -6,7 +6,7 @@
               Menu <i class="fa fa-bars"></i>
           </button>
       </div>
-      <% unless action_name == "index" && controller_name == "pages" %>
+      <% unless action_name == "index" && controller_name == "pages" && !citizen_signed_in?  %>
           <a class="navbar-brand page-scroll" href='/' rel="home" title="Lottery">
             <%= image_tag("logo_bonus.png", 
               :alt => "brand", 
