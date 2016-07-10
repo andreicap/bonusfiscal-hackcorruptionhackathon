@@ -1,4 +1,33 @@
 
+<% if controller_name == "pages" %>
+  <% if action_name == "index" %>
+    <script type="text/javascript">
+      
+      (function ($) {
+        $(document).ready(function(){
+          if (window.location.href == "http://localhost:3000/")
+          // hide .navbar first
+            $(".navbar").hide();
+            // fade in .navbar
+            $(function () {
+              $(window).scroll(function () {
+
+                 // set distance user needs to scroll before we start fadeIn
+                 if ($(this).scrollTop() > 100) {
+                  $('.navbar').fadeIn();
+                } else {
+                  $('.navbar').fadeOut();
+                }
+              });
+            });
+          end
+          });
+      }(jQuery));
+    </script>
+  <% end %>
+<% end %>
+
+
 <section class="intro">
   <div class="intro-body">
     <div class="container">
