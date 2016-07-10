@@ -2,6 +2,7 @@ class SubmissionsController < ApplicationController
 
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
   before_action :set_submissions, only: [:index]
+  skip_before_action :authenticate_citizen!, :only =>[:index]
   def index
 
   end
