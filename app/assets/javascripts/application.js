@@ -22,7 +22,7 @@
 $(document).ready(
   function()
   {
-    $("#picker").datepicker($.datepicker.regional['de']);
+    $("#picker").datepicker($.datepicker.regional['en']);
     $("#picker").datepicker();
   }
 );
