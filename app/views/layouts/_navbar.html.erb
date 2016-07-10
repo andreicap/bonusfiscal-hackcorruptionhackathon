@@ -6,11 +6,13 @@
               Menu <i class="fa fa-bars"></i>
           </button>
       </div>
-      <a class="navbar-brand page-scroll" href='/' rel="home" title="Lottery">
-        <%= image_tag("logo_bonus.png", 
-        :alt => "brand", 
-        :style => "max-width:120px; margin-top: -14px;") %>
-      </a>
+      <% unless action_name == "index" && controller_name == "pages" %>
+          <a class="navbar-brand page-scroll" href='/' rel="home" title="Lottery">
+            <%= image_tag("logo_bonus.png", 
+              :alt => "brand", 
+              :style => "max-width:120px; margin-top: -14px;") %>
+          </a>
+      <% end %>
       </div>
       <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
         <ul class="nav navbar-nav navbar-right">
