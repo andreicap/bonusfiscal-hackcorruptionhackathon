@@ -134,6 +134,8 @@ body {
     }
 }
 
+
+
 @-webkit-keyframes pulse {
     from {
         -webkit-transform: scale(1);
@@ -169,7 +171,7 @@ body {
 }
 
 .content-section {
-    padding-top: 20px;
+    padding-top: 2px;
 }
 
 .download-section {
@@ -226,6 +228,10 @@ body {
         color: black;
         background-color: $primary;
     }
+}
+
+.btn-warning, .btn-lg {
+    background: #d89328 !important;
 }
 
 ul.banner-social-buttons {
