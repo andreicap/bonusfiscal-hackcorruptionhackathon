@@ -33,7 +33,7 @@ class TicketsController < ApplicationController
     @ticket.ticket_category = assign_ticket_category @ticket
 
     # assign user's ip when a ticket is submitted
-    @ticket.submission_ip = request.env['REMOTE_ADDR']
+    @ticket.submission_ip = request.remote_ip
 
     begin
       respond_to do |format|
