@@ -15,10 +15,11 @@
 
 <%= bootstrap_form_for(ticket) do |f| %>
   <div class="actions">
-    <%= f.text_field :company_idno,label: "Cod Fiscal (IDNO)" %>
-    <%= f.text_field :nr_bon_fiscal, label: "Numărul bonului fiscal" %>
-    <%= f.text_field :price, label: "Suma totală a bonului fiscal" %>
     <%= f.text_field :company, label: "Denumirea întreprinderii" %>
+    <%= f.text_field :company_idno,label: "Cod Fiscal (IDNO)" %>
+    <%= f.text_field :company_mcc,label: "Nr. de înregistrare a MCC" %>
+    <%= f.text_field :price, label: "Suma totală a bonului fiscal" %>
+    <%= f.text_field :nr_bon_fiscal, label: "Numărul bonului fiscal" %>
     <%= f.text_field :data_el, label: "Data eliberării", class: "datepicker" %>
     <%= f.submit "Înregistrează", class: "btn btn-primary"%>
   </div>

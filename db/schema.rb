@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715085930) do
+ActiveRecord::Schema.define(version: 20160715090844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160715085930) do
     t.string   "data_el"
     t.string   "winning_id"
     t.string   "ticket_category"
+    t.string   "company_mcc"
     t.index ["company_idno", "nr_bon_fiscal", "data_el"], name: "index_tickets_on_company_idno_and_nr_bon_fiscal_and_data_el", unique: true, using: :btree
   end
 
