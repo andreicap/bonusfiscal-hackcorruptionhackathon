@@ -60,10 +60,7 @@ ActiveRecord::Schema.define(version: 20160715110209) do
     t.string   "winning_id"
     t.string   "ticket_category"
     t.string   "company_mcc"
-<<<<<<< HEAD
-=======
     t.string   "submission_ip"
->>>>>>> f9f5413f2d37d457a5f6306efdde23427ba59256
     t.index ["company_idno", "nr_bon_fiscal", "data_el"], name: "index_tickets_on_company_idno_and_nr_bon_fiscal_and_data_el", unique: true, using: :btree
   end
 
