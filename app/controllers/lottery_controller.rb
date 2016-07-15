@@ -3,7 +3,9 @@ class LotteryController < ApplicationController
   before_action :set_tickets, :set_winners
 
   def index
-
+    now = Time.now
+    deadline =  1469449848
+    @timeleft = (deadline - now.to_i)*1000
   end
 
   def generate_winners
