@@ -32,6 +32,9 @@ class TicketsController < ApplicationController
     @ticket.winning_id = generate_winning_id @ticket
     @ticket.ticket_category = assign_ticket_category @ticket
 
+    # assign user's ip when a ticket is submitted
+    @ticket.submission_ip = request.env['REMOTE_ADDR']
+
     begin
       respond_to do |format|
         if @ticket.save
