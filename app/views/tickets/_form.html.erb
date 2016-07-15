@@ -21,6 +21,7 @@
     <%= f.text_field :price, label: "Suma totală a bonului fiscal" %>
     <%= f.text_field :nr_bon_fiscal, label: "Numărul bonului fiscal" %>
     <%= f.text_field :data_el, label: "Data eliberării", class: "datepicker" %>
+    <%= f.attachinary_file_field :ticket_image  %>
     <%= f.submit "Înregistrează", class: "btn btn-primary"%>
   </div>
 <% end %>

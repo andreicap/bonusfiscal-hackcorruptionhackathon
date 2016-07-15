@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: cartocri
+  api_key: '173834527511146'
+  api_secret: aHci9U-AnuhKoR5FPfXl7N1958M
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: cartocri
+  api_key: '173834527511146'
+  api_secret: aHci9U-AnuhKoR5FPfXl7N1958M
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: cartocri
+  api_key: '173834527511146'
+  api_secret: aHci9U-AnuhKoR5FPfXl7N1958M
+  enhance_image_tag: true
+  static_image_support: false

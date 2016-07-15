@@ -36,6 +36,7 @@
     </tr>
     <% end %>
   </table>
+  <dir><%= cl_image_tag(@ticket.ticket_image.path, class: "img-responsive img-thumbnail center-block") %></dir>
   <div align="center">
     <a href="/tickets/new" class="btn btn-success" > Adaugă un bon nou</a>
     <a href="/tickets" class="btn btn-info" > Toate bonurile mele </a>

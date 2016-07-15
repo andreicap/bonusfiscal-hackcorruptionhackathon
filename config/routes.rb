@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+	mount Attachinary::Engine => '/attachinary'
   devise_for :citizens, :controllers => { registrations: 'registrations' }
   resources :tickets
   resources :submissions

@@ -1,4 +1,5 @@
 class Ticket < ApplicationRecord
+  has_attachment :ticket_image
   belongs_to :citizen
   has_one :winner, dependent: :destroy
 

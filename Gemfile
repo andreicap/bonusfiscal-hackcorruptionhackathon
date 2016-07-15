@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap-datepicker-rails'
 gem 'digest'
+gem 'cloudinary'
+gem 'attachinary'
 
 group :development, :test do
   gem 'byebug', platform: :mri
