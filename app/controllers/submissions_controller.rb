@@ -2,7 +2,7 @@ class SubmissionsController < ApplicationController
 
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
   before_action :set_submissions, only: [:index]
-  skip_before_action :authenticate_citizen!, :only =>[:index]
+  skip_before_action :authenticate_citizen!, :only =>[:index, :show, :edit, :update, :destroy, :create]
   def index
 
   end
@@ -19,7 +19,7 @@ class SubmissionsController < ApplicationController
 
   def create
     @submission = Submission.new(submission_params)
-    @submission.citizen = current_citizen
+    @submission.citizen_id = current_citizen.id if citizen_signed_in?
 
     respond_to do |format|
       if @submission.save
