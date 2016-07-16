@@ -16,18 +16,12 @@
               <td class='clickable-row' data-href="<%= ticket_path(t) %>"><%= t.data_el %></td>
               <td class='clickable-row' data-href="<%= ticket_path(t) %>"><%= t.winning_id %></td>
               <td align="center">
-
                 <%= button_to t, 
                         class: "btn btn-danger btn-xs", method: :delete,
                         data: { confirm: 'Sunteți sigur?' }  do  %>
                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                     Șterge
-
                 <% end %>
-
-
-
-
               </td>
             </tr>
           <% end %>
