@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require cloudinary/jquery.cloudinary
-//= require attachinary
 //= require jquery
 //= require jquery_ujs
 //= require jquery.turbolinks
@@ -19,11 +17,11 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require_tree .
+//= require cloudinary/jquery.cloudinary
+//= require attachinary
 
-
-$(document).ready(
-  function()
-  {
+$(document).on('turbolinks:load', function() {
+  function(){
     $("#picker").datepicker($.datepicker.regional['en']);
     $("#picker").datepicker();
   }

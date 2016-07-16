@@ -1,46 +1,66 @@
 <div class="container">
-  <h4>Detalii bon fiscal</h4>
-  <div align="center">
-    <a href="/tickets/new" class="btn btn-success" > Adaugă un bon nou</a>
-    <a href="/tickets" class="btn btn-info" > Toate bonurile mele </a>
+    <h4>Detalii bon fiscal</h4>
+    <br>
+    <div class="container col-md-7 col-md-offset-1">
+    <table class="table table-tickets">
+      <tr>
+        <td>Cod fiscal</td>
+        <td><%= @ticket.company_idno %></td>
+      </tr>
+      <tr>
+        <td>Nr. de înregistrare a MCC</td>
+        <td><%= @ticket.company_mcc %></td>
+      </tr>
+      <tr>
+        <td>Numărul bonului fiscal</td>
+        <td><%= @ticket.nr_bon_fiscal %></td>
+      </tr>
+      <tr>
+        <td>Prețul bonului</td>
+        <td><%= @ticket.price %></td>
+      </tr>
+      <tr>
+        <td>Compania</td>
+        <td><%= @ticket.company %></td>
+      </tr>
+      <tr>
+        <td>Data eliberării</td>
+        <td><%= @ticket.data_el %></td>
+      </tr>
+      <tr>
+        <td>Cod de participare</td>
+        <td><%= @ticket.winning_id %></td>
+      </tr>
+      <% if Rails.env.development? %>
+      <tr>
+        <td>Id-ul cetățeanului</td>
+        <td><%= @ticket.citizen.id %></td>
+      </tr>
+      <% end %>
+    </table>
+    <div class="row" align="center">
+      <div class="col-md-3">
+        <%= button_to @ticket, 
+          class: "btn btn-danger", method: :delete,
+          data: { confirm: 'Sunteți sigur?' }  do  %>
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+          Șterge bonul
+          <% end %>
+      </div>
+      <div class="col-md-3 col-md-offset-2">
+        <a href="/tickets" class="btn btn-info">Toate bonurile</a>
+      </div>
+      <div class="col-md-4">
+        <a href="/tickets/new" class="btn btn-success">Adaugă un bon</a>
+      </div>
+    </div>
   </div>
-  <br>
-  <table class="table table-tickets">
-    <tr>
-      <td>Cod fiscal</td>
-      <td><%= @ticket.company_idno %></td>
-    </tr>
-    <tr>
-      <td>Nr. de înregistrare a MCC</td>
-      <td><%= @ticket.company_mcc %></td>
-    </tr>
-    <tr>
-      <td>Numărul bonului fiscal</td>
-      <td><%= @ticket.nr_bon_fiscal %></td>
-    </tr>
-    <tr>
-      <td>Prețul bonului</td>
-      <td><%= @ticket.price %></td>
-    </tr>
-    <tr>
-      <td>Compania</td>
-      <td><%= @ticket.company %></td>
-    </tr>
-    <tr>
-      <td>Data eliberării</td>
-      <td><%= @ticket.data_el %></td>
-    </tr>
-    <tr>
-      <td>Cod de participare</td>
-      <td><%= @ticket.winning_id %></td>
-    </tr>
-    <% if Rails.env.development? %>
-    <tr>
-      <td>Id-ul cetățeanului</td>
-      <td><%= @ticket.citizen.id %></td>
-    </tr>
+  <div class="container col-md-3">
+    <% if @ticket.ticket_image %>
+      <%= cl_image_tag(@ticket.ticket_image.path, :width=>225, class: "img-responsive img-thumbnail center-block") %>
+    <% else %>
+      <%= cl_image_tag("no_uploaded_xhmfey.png", :width=>200, class: "img-responsive img-thumbnail center-block") %>
     <% end %>
-  </table>
-  <div align="center"><i class="fa fa-trash-o" aria-hidden="true"> </i> <%= link_to 'Șterge bonul dat', @ticket, method: :delete, data: { confirm: 'Sunteți sigur?' } %></div>
-  <div><%= cl_image_tag(@ticket.ticket_image.path, class: "img-responsive img-thumbnail center-block") %></div>
+  </div>
 </div>
+
