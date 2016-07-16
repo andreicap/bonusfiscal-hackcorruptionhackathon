@@ -1,5 +1,10 @@
 <div class="container">
   <h4>Detalii bon fiscal</h4>
+  <div align="center">
+    <a href="/tickets/new" class="btn btn-success" > Adaugă un bon nou</a>
+    <a href="/tickets" class="btn btn-info" > Toate bonurile mele </a>
+  </div>
+  <br>
   <table class="table table-tickets">
     <tr>
       <td>Cod fiscal</td>
@@ -36,9 +41,6 @@
     </tr>
     <% end %>
   </table>
-  <dir><%= cl_image_tag(@ticket.ticket_image.path, class: "img-responsive img-thumbnail center-block") %></dir>
-  <div align="center">
-    <a href="/tickets/new" class="btn btn-success" > Adaugă un bon nou</a>
-    <a href="/tickets" class="btn btn-info" > Toate bonurile mele </a>
-  </div>
+  <div align="center"><i class="fa fa-trash-o" aria-hidden="true"> </i> <%= link_to 'Șterge bonul dat', @ticket, method: :delete, data: { confirm: 'Sunteți sigur?' } %></div>
+  <div><%= cl_image_tag(@ticket.ticket_image.path, class: "img-responsive img-thumbnail center-block") %></div>
 </div>
