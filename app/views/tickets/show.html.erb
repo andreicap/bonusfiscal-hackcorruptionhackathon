@@ -56,12 +56,10 @@
     </div>
   </div>
   <div class="container col-md-3">
-
-
     <% if @ticket.ticket_image %>
-      <%= cl_image_tag(@ticket.ticket_image.path, :width=>225, class: "img-responsive img-thumbnail center-block") %>
-
-
+      <div class="ticket_img">    
+        <%= cl_image_tag(@ticket.ticket_image.path, alt: "Bon fiscal",id: "myImg", :width=>300, class: "img-responsive img-thumbnail center-block") %>
+      </div>
     <% else %>
       <%= cl_image_tag("no_uploaded_xhmfey.png", :width=>200, class: "img-responsive img-thumbnail center-block") %>
     <% end %>
@@ -70,14 +68,11 @@
 
 <!-- Trigger the Modal -->
 
-<%= cl_image_tag(@ticket.ticket_image.path, alt: "Bon fiscal",id: "myImg", :width=>300, class: "img-responsive img-thumbnail center-block") %>
+
 
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
-
-  <!-- The Close Button -->
-  <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
 
   <!-- Modal Content (The Image) -->
   <img class="modal-content" id="img01">
@@ -88,6 +83,12 @@
 
 
 <style type="text/css">
+
+  .ticket_img:hover img {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
   /* Style the Image Used to Trigger the Modal */
   #myImg {
       border-radius: 5px;
@@ -194,8 +195,9 @@
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
 
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() { 
+  // When the user clicks on <img01 ID>, close the modal
+  modalImg.onclick = function() { 
     modal.style.display = "none";
   }
+
 </script>
