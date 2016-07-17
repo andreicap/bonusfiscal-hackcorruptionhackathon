@@ -17,11 +17,11 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require_tree .
+//= require cloudinary/jquery.cloudinary
+//= require attachinary
 
-
-$(document).ready(
-  function()
-  {
+$(document).on('turbolinks:load', function() {
+  function(){
     $("#picker").datepicker($.datepicker.regional['en']);
     $("#picker").datepicker();
   }

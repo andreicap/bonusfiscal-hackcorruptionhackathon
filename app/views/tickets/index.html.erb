@@ -11,12 +11,17 @@
         <% @tickets.each do |t| %>
           <% if t.citizen == current_citizen %>
             <%i = i+1%>
-            <tr class='clickable-row' data-href = <%= ticket_path(t) %>>
-              <td><%= i %></td>
-              <td><%= t.data_el %></td>
-              <td cursor="pointer"><%= t.winning_id %></td>
+            <tr>
+              <td class='clickable-row' data-href="<%= ticket_path(t) %>"><%= i %></td>
+              <td class='clickable-row' data-href="<%= ticket_path(t) %>"><%= t.data_el %></td>
+              <td class='clickable-row' data-href="<%= ticket_path(t) %>"><%= t.winning_id %></td>
               <td align="center">
-                <i class="fa fa-trash-o" aria-hidden="true"> </i> <%= link_to 'Șterge', t, method: :delete, data: { confirm: 'Sunteți sigur?' } %>
+                <%= button_to t, 
+                        class: "btn btn-danger btn-xs", method: :delete,
+                        data: { confirm: 'Sunteți sigur?' }  do  %>
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    Șterge
+                <% end %>
               </td>
             </tr>
           <% end %>
@@ -28,7 +33,7 @@
   <% end %>
 
   <script type="text/javascript">
-    jQuery(document).ready(function($) {
+    $(document).on('turbolinks:load', function() {
       $(".clickable-row").click(function() {
         window.document.location = $(this).data("href");
       });
