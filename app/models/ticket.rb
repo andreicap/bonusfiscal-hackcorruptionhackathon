@@ -1,6 +1,7 @@
 class Ticket < ApplicationRecord
   has_attachment :ticket_image
   belongs_to :citizen
+  belongs_to :guest
   has_one :winner, dependent: :destroy
 
   validates :company_idno, :company_mcc, :nr_bon_fiscal, :price, :company, :data_el, :presence => { :message => "Câmpul este obligatoriu"}
