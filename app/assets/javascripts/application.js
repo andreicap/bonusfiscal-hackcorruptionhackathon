@@ -21,7 +21,6 @@
 //= require attachinary
 
 $(document).on('turbolinks:load', function() {
-  function(){
     $("#picker").datepicker($.datepicker.regional['en']);
     $("#picker").datepicker();
   }
