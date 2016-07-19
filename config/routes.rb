@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  resources :guests, only: [:create, :destroy]
+
 	mount Attachinary::Engine => '/attachinary'
   devise_for :citizens, :controllers => { registrations: 'registrations' }
   resources :tickets
