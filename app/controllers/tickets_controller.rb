@@ -70,13 +70,17 @@ class TicketsController < ApplicationController
           format.html { redirect_to @ticket, notice: 'Vă mulțumim pentru înregistrarea bonului. Participarea dumneavoastră contează.' }
           format.json { render :show, status: :created, location: @ticket }
         else
+          if !citizen_signed_in?
+            format.html { render :newguestticket}
+            format.json { render json: @ticket.errors.full_messages, status: :unprocessable_entity }
+          end
           format.html { render :new }
           format.json { render json: @ticket.errors.full_messages, status: :unprocessable_entity }
         end
       end
     rescue ActiveRecord::RecordNotUnique
       if !citizen_signed_in?
-        redirect_to root_path, notice: 'Ne cerem scuze. Bonul a fost deja înregistrat.'
+        redirect_to root_path, alert: 'Ne cerem scuze. Bonul a fost deja înregistrat.'
       else
         redirect_to new_ticket_path, alert: 'Bonul a fost deja înregistrat.'
       end
