@@ -45,8 +45,13 @@ class TicketsController < ApplicationController
     if citizen_signed_in?
       @ticket.citizen = current_citizen
     else
-      @guest = Guest.new(ticket_params[:guest])
-      @ticket.guest = @guest
+      registered_guest = Guest.find_by_email(ticket_params[:guest]["email"])
+      if registered_guest  
+        @guest = registered_guest
+      else
+        @guest = Guest.new(ticket_params[:guest])
+      end 
+        @ticket.guest = @guest
     end
 
     @ticket.winning_id = generate_winning_id @ticket
