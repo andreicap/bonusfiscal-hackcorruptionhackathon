@@ -37,14 +37,16 @@ class TicketsController < ApplicationController
 
   # POST /tickets
   # POST /tickets.json
-  def create
 
-    @ticket = Ticket.new(ticket_params)
+  def create
+    
+    @ticket = Ticket.new(ticket_params.except(:guest))
 
     if citizen_signed_in?
       @ticket.citizen = current_citizen
     else
-      @guest = Guest.new(guest_params)
+      @guest = Guest.new(ticket_params[:guest])
+      @ticket.guest = @guest
     end
 
     @ticket.winning_id = generate_winning_id @ticket
