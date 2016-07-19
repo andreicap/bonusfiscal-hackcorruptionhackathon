@@ -33,7 +33,7 @@
                             <ul class="list-group text-center">
                               <li class="list-group-item">
                               <h5>
-                                <%= t.ticket.citizen.name %> - <%= t.ticket.winning_id %>
+                                 <%= t.ticket.winning_id %>
                               </h5>
                               </li>
                             </ul>
@@ -56,9 +56,9 @@
                           <% if t.ticket.ticket_category == "medium" %>
                             <ul class="list-group text-center">
                               <li class="list-group-item">
-                              <h5>
-                                <%= t.ticket.citizen.name %> - <%= t.ticket.winning_id %>
-                              </h5>
+                                <h5>
+                                  <%= t.ticket.winning_id %>
+                                </h5>
                               </li>
                             </ul>
                           <% end %>
@@ -80,9 +80,9 @@
                           <% if t.ticket.ticket_category == "high" %>
                             <ul class="list-group text-center">
                               <li class="list-group-item">
-                              <h5>
-                                <%= t.ticket.citizen.name %> - <%= t.ticket.winning_id %>
-
+                                <h5>
+                                  <%= t.ticket.winning_id %>
+                                </h5>
                               </li>
                             </ul>
                           <% end %>
@@ -121,6 +121,7 @@
 
 <script type="text/javascript">
 var timing = $('.lottery_class').data('lottery-deadline')
+
 
 function getTimeRemaining(endtime) {
   var t = Date.parse(endtime) - Date.parse(new Date());
@@ -165,5 +166,3 @@ function getTimeRemaining(endtime) {
   initializeClock ('clockdiv', deadline);
 
 </script>
-
-

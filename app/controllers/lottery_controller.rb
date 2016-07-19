@@ -30,9 +30,14 @@ private
       end
     end
 
-    select_winner_from_array  ids_low - low_win_ids, "low"
-    select_winner_from_array  ids_medium - medium_win_ids, "medium"
-    select_winner_from_array  ids_high - high_win_ids, "high"
+    categories = ""
+    categories << "low" if (ids_low - low_win_ids).empty?
+    categories << " medium" if (ids_medium - medium_win_ids).empty?
+    categories << " high" if (ids_high - high_win_ids).empty?
+
+    select_winner_from_array ids_low - low_win_ids, categories
+    select_winner_from_array ids_medium - medium_win_ids, categories
+    select_winner_from_array ids_high - high_win_ids, categories
 
     redirect_to '/lottery'
   end
@@ -46,8 +51,8 @@ private
   end
 
   def select_winner_from_array ids_pool, category
-    if ids_pool.empty?
-      flash[:notice] = "Tichetele de categoria #{category} s-au consumat"
+    if ids_pool.empty? && category != ""
+      flash[:notice] = "Tichetele de categoriile: #{category} s-au consumat"
       # redirect_to '/lottery'
     else
       winner_id = (ids_pool).sample
