@@ -5,7 +5,9 @@ class TicketsController < ApplicationController
   ########withoutauthlogic
 
   def newguestticket
+    redirect_to new_ticket_path if citizen_signed_in?
     @ticket = Ticket.new
+    @guest = Guest.new
   end
 
   ########withoutauthlogic
@@ -36,12 +38,19 @@ class TicketsController < ApplicationController
   # POST /tickets
   # POST /tickets.json
   def create
+
     @ticket = Ticket.new(ticket_params)
-    @ticket.citizen = current_citizen
+
+    if citizen_signed_in?
+      @ticket.citizen = current_citizen
+    else
+      @guest = Guest.new(guest_params)
+    end
+
     @ticket.winning_id = generate_winning_id @ticket
     @ticket.ticket_category = assign_ticket_category @ticket
 
-    # assign user's ip when a ticket is submitted
+    
     @ticket.submission_ip = request.remote_ip
 
     begin

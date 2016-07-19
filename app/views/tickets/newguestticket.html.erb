@@ -17,7 +17,7 @@
       <% end %>
     <% end %>
 
-    <%= bootstrap_form_for(@ticket) do |f| %>
+    <%= bootstrap_form_for @ticket do |f| %>
       <div class="actions">
         <%= f.text_field :company, label: "Denumirea întreprinderii" %>
         <%= f.text_field :company_idno,label: "Cod Fiscal (IDNO)" %>
@@ -25,6 +25,12 @@
         <%= f.text_field :price, label: "Suma totală a bonului fiscal" %>
         <%= f.text_field :nr_bon_fiscal, label: "Numărul bonului fiscal" %>
         <%= f.text_field :data_el, label: "Data eliberării", class: "datepicker" %>
+        <%= f.fields_for @guest do |g| %>
+           <%= g.text_field :email, label: "Email" %>
+           <%= g.text_field :name, label: "Prenume" %>
+            <%  g.text_field :dob, label: "Data nașterii"%>
+           <%= g.text_field :surname, label: "Nume" %>
+        <% end %>
         <%= f.attachinary_file_field :ticket_image %> 
         <%= f.submit "Înregistrează", class: "btn btn-primary"%>
       </div>
@@ -35,4 +41,14 @@
                 :alt => "brand", 
                 :style => "max-width:85%") %>
     </div>
+
 </div>
+
+
+
+
+
+
+
+
+
