@@ -14,7 +14,10 @@ private
 
   def ticket_quota
     # Number of tickets is ct + 1
-    ct = citizen.tickets.where(:created_at => (Time.zone.now.beginning_of_day..Time.zone.now)).count
+    ct = 0
+    if self.citizen
+      ct = citizen.tickets.where(:created_at => (Time.zone.now.beginning_of_day..Time.zone.now)).count
+    end
     if ct > 4
       errors.add(:base, "Numărul de bonuri pentru astăzi a fost depășit.")
     end

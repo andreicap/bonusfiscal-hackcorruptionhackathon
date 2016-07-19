@@ -1,17 +1,14 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_citizen!, only: [:noauthnew]
-
-
+  skip_before_action :authenticate_citizen!, only: [:newguestticket, :create]
 
   ########withoutauthlogic
 
-  def noauthnew
+  def newguestticket
     @ticket = Ticket.new
   end
 
   ########withoutauthlogic
-
 
   # GET /tickets
   # GET /tickets.json
@@ -50,6 +47,10 @@ class TicketsController < ApplicationController
     begin
       respond_to do |format|
         if @ticket.save
+          if !citizen_signed_in?
+            format.html { redirect_to root_path, notice: 'Vă mulțumim pentru înregistrarea bonului. Verificați e-mailul dumneavoastră.' }
+            format.json { render :show, status: :created, location: @ticket }
+          end
           format.html { redirect_to @ticket, notice: 'Vă mulțumim pentru înregistrarea bonului. Participarea dumneavoastră contează.' }
           format.json { render :show, status: :created, location: @ticket }
         else
@@ -58,7 +59,11 @@ class TicketsController < ApplicationController
         end
       end
     rescue ActiveRecord::RecordNotUnique
-      redirect_to new_ticket_path, alert: 'Bonul a fost deja înregistrat.'
+      if !citizen_signed_in?
+        redirect_to root_path, notice: 'Ne cerem scuze. Bonul a fost deja înregistrat.'
+      else
+        redirect_to new_ticket_path, alert: 'Bonul a fost deja înregistrat.'
+      end
     end
   end
 

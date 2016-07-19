@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get '/report', to: 'pages#report'
   get '/faq', to: 'pages#faq'
 
-  get '/newticket', to: 'tickets#noauthnew'
+  get '/newticket', to: 'tickets#newguestticket'
 end
