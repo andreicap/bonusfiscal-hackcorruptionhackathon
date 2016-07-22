@@ -1,5 +1,7 @@
 <div class="container">
 
+<%= @guest.errors.full_messages if @guest.errors.any? %>
+
 <h2>Înregistrare bon</h2>
   <div class="container col-md-5">
     <%= bootstrap_form_for(@ticket) do |f| %>
